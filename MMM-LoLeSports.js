@@ -10,13 +10,16 @@ Module.register("MMM-LoLeSports",{
 
 		let dataCell = document.createElement("th");
 		dataCell.classList.add("th");
-
 		dataCell.innerHTML = "League";
 		header.appendChild(dataCell);
 
+		dataCell = document.createElement("th");
+		dataCell.classList.add("th");
 		dataCell.innerHTML = "Team 1";
 		header.appendChild(dataCell);
 
+		dataCell = document.createElement("th");
+		dataCell.classList.add("th");
 		dataCell.innerHTML = "Team 2 ";
 		header .appendChild(dataCell);
 		wrapper.appendChild(header);
@@ -27,13 +30,16 @@ Module.register("MMM-LoLeSports",{
 
 		dataCell = document.createElement("td");
 		dataCell.classList.add("td");
-
 		dataCell.innerHTML = "LEC";
 		testRow.appendChild(dataCell);
 
+		dataCell = document.createElement("td");
+		dataCell.classList.add("td");
 		dataCell.innerHTML = "Fanatic";
 		testRow.appendChild(dataCell);
 
+		dataCell = document.createElement("td");
+		dataCell.classList.add("td");
 		dataCell.innerHTML ="G2 Esports";
 		testRow.appendChild(dataCell);
 		wrapper.appendChild(testRow);
