@@ -3,6 +3,7 @@ Module.register("MMM-LoLeSports",{
     getDom: function() {
 		let wrapper = document.createElement("table");
 		wrapper.id = "LOLESPORT-Table";
+		wrapper.setAttribute("class", "MMM-LoLeSports")
 
 
 		let header = document.createElement("tr");
@@ -24,6 +25,7 @@ Module.register("MMM-LoLeSports",{
 		let testRow = document.createElement("tr");
 
 		dataCell = document.createElement("td");
+	
 		dataCell.innerHTML = "LEC";
 		testRow.appendChild(dataCell);
 
