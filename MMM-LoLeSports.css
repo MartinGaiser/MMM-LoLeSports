@@ -1,9 +1,11 @@
 .MMM-LoLeSports .leaguetable {
     border-collapse: collapse;
+    border: white;
+    font-size: 70%;
 }
 
 .MMM-LoLeSports .leagueheader {
-    font-weight: bolder;
+    font-weight: bold;
     border-top: 2px white;
     text-align: left;
 }
@@ -11,13 +13,13 @@
 .MMM-LoLeSports .team1header {
     font-weight: bold;
     border-top: 2px white;
-    text-align: left;
+    text-align: center;
 }
 
 .MMM-LoLeSports .team2header {
     font-weight: bold;
     border-top: 2px white;
-    text-align: right;
+    text-align: center;
 }
 
 .MMM-LoLeSports .versusheader {
@@ -30,17 +32,14 @@
     text-align: left;
 }
 .MMM-LoLeSports .team1 {
-    font-size: small;
     text-align: left;
 }
 
 .MMM-LoLeSports .team2 {
-    font-size: small;
     text-align: right;
 }
 
 .MMM-LoLeSports .versus {
-    font-weight: bold;
     padding-left: 2px;
     padding-right: 2px;
     text-align: center;
