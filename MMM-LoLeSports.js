@@ -59,8 +59,8 @@ Module.register("MMM-LoLeSports",{
 
 		let dataCell = document.createElement("td")
 		dataCell.classList.add("datecell","td");
-		dateCell.innerHTML = date;
-		testRow.appendChild(dateCell);
+		dataCell.innerHTML = date;
+		testRow.appendChild(dataCell);
 
 		dataCell = document.createElement("td");
 		dataCell.classList.add("league","td");
