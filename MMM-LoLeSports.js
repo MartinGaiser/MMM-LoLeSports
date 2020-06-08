@@ -39,6 +39,10 @@ Module.register("MMM-LoLeSports",{
 		return wrapper;
 	},
 
+	getStyles: function(){
+		return ['MMM-LoLeSports.css'];
+	}
+
 	start: function() {
 		Log.info("Starting module: " + this.name);
 	},
