@@ -22,7 +22,7 @@ module.exports = NodeHelper.create({
 			console.log("Starting to Fetch League Matches");
 			let config = payload;
 			//Start Interval Fething of Data
-			self.getData(config.apiKey, config.numberOfGames, config.league_ids, config.updateInterval);
+			this.getData(config.apiKey, config.numberOfGames, config.league_ids, config.updateInterval);
 		}
 	},
 
