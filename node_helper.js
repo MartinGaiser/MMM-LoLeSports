@@ -54,12 +54,12 @@ module.exports = NodeHelper.create({
 				Log.error("MMM-LoLeSports", this.status);
 				retry = false;
 			}
-			if (retry){
+			/*if (retry){
 				//TODO find a way to get retry delay as variable
 				setTimeout(function(){
 					getData(apiKey, xPerPage, league_ids, updateDelay);
 				}, updateDelay);
-			}
+			}*/
 		}
 		   
 		request(options, callback);
