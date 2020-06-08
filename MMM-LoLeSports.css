@@ -1,4 +1,15 @@
-.MMM-LoLeSports .leaguetable {
+/*
+ *
+ * MMM-LoLeSports
+ *
+ * Martin Gaiser
+ * MIT Licensed.
+ *
+ * Custom here your css module
+ *
+ */
+ 
+ .MMM-LoLeSports .leaguetable {
     border-collapse: collapse;
     font-size: 90%;
     color: white;
