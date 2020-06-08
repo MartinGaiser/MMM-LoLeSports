@@ -82,8 +82,8 @@ module.exports = NodeHelper.create({
 					{
 						"scheduled_at": payload[i].scheduled_at,
 						"leagueName": payload[i].league.name,
-						"team1": payload[i].opponents[0].opponent.name,
-						"team2": payload[i].opponents[1].opponent.name
+						"team1": payload[i].opponents[0].opponent.acronym,
+						"team2": payload[i].opponents[1].opponent.acronym
 					}
 				);
 			}
