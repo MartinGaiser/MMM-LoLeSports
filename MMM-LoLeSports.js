@@ -8,7 +8,7 @@ Module.register("MMM-LoLeSports",{
 		let header = document.createElement("tr");
 
 		let dataCell = document.createElement("td");
-		dataCell.innerHTML = "LEC";
+		dataCell.innerHTML = "League";
 		header.appendChild(dataCell);
 
 		dataCell = document.createElement("td");
