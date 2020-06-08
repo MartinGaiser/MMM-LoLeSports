@@ -41,7 +41,7 @@ Module.register("MMM-LoLeSports", {
 		}
 
 		// If this.dataRequest is not empty
-		if (this.data == null) {
+		if (this.leagueData == null) {
 			var wrapper = document.createElement("div");
 			wrapper.innerHTML = "Loading...";
 			this.sendSocketNotification("MMM-LoLeSports-StartFetching", this.config)
