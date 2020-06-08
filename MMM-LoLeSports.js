@@ -42,7 +42,7 @@ Module.register("MMM-LoLeSports", {
 		}
 
 		// If this.dataRequest is not empty
-		if (!this.data) {
+		if (this.data == null) {
 			wrapper.innerHTML = "Loading...";
 			this.sendSocketNotification("MMM-LoLeSports-StartFetching", this.config)
 			return wrapper;
