@@ -18,30 +18,61 @@ module.exports = NodeHelper.create({
 	 * argument payload mixed - The payload of the notification.
 	 */
 	socketNotificationReceived: function(notification, payload) {
-		if (notification === "MMM-LoLeSports-NOTIFICATION_TEST") {
-			console.log("Working notification system. Notification:", notification, "payload: ", payload);
-			// Send notification
-			this.sendNotificationTest(this.anotherFunction()); //Is possible send objects :)
+		if (notification === "MMM-LoLeSports-StartFetching") {
+			console.log("Starting to Fetch League Matches");
+			let config = payload;
+			//Start Interval Fething of Data
+			self.getData(config.apiKey, config.numberOfGames, config.league_ids, config.updateInterval);
 		}
 	},
 
-	// Example function send notification test
-	sendNotificationTest: function(payload) {
-		this.sendSocketNotification("MMM-LoLeSports-NOTIFICATION_TEST", payload);
-	},
-
-	// this you can create extra routes for your module
-	extraRoutes: function() {
+	getData: function(apiKey, xPerPage, league_ids, updateDelay) {
+		var urlApi = "https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=" + league_ids + "&sort=scheduled_at";
+		var retry = true;
 		var self = this;
-		this.expressApp.get("/MMM-LoLeSports/extra_route", function(req, res) {
-			// call another function
-			values = self.anotherFunction();
-			res.send(values);
-		});
+
+		var dataRequest = new XMLHttpRequest();
+		dataRequest.open("GET", urlApi, true);
+		dataRequest.setRequestHeader("Authorization","Bearer "+ apiKey)
+		dataRequest.setRequestHeader("X-Page", 1);
+		dataRequest.setRequestHeader("X-Per-Page", xPerPage); //TODO number of games variable
+		dataRequest.onreadystatechange = function() {
+			if (this.readyState === 4) {
+				if (this.status === 200) {
+					self.processData(JSON.parse(this.response));
+				} else if (this.status === 401) {
+					self.sendUnauthorizedNotification("TODO")
+					Log.error(self.name, this.status);
+					retry = false;
+				} else {
+					self.sendErrorNotification("TODO");
+				}
+				if (!error){
+					//TODO find a way to get retry delay as variable
+					setTimeout(function(){
+						getData(apiKey, xPerPage, league_ids, updateDelay);
+					}, updateDelay);
+				}
+			}
+		};
+		dataRequest.send();
 	},
 
-	// Test another function
-	anotherFunction: function() {
-		return {date: new Date()};
-	}
+	processData: function(jsonObj){
+		//TODO get relevant informations from data and forward it to main-module.
+		this.sendLeagueDataNotification("Matches");
+	},	
+
+	// Example function send notification test
+	sendUnauthorizedNotification: function(payload) {
+		this.sendSocketNotification("MMM-LoLeSports-Unauthorized", payload);
+	},
+
+	sendErrorNotification: function(payload) {
+		this.sendSocketNotification("MMM-LoLeSports-Error",payload);
+	},
+
+	sendLeagueDataNotification: function(payload) {
+		this.sendLeagueDataNotification("MMM-LoLeSports-GameData", payload);
+	},
 });
