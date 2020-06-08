@@ -47,7 +47,7 @@ Module.register("MMM-LoLeSports", {
 			this.sendSocketNotification("MMM-LoLeSports-StartFetching", this.config)
 			return wrapper;
 		}else{
-			Log.debug(this.data);
+			Log.log(this.data);
 			var wrapper = document.createElement("table");
 			wrapper.classList.add("leaguetable")
 			wrapper.appendChild(this.getHeaderRow());
