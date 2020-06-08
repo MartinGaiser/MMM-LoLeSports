@@ -47,12 +47,12 @@ Module.register("MMM-LoLeSports", {
 			this.sendSocketNotification("MMM-LoLeSports-StartFetching", this.config)
 			return wrapper;
 		}else{
+			Log.debug(data);
 			var wrapper = document.createElement("table");
 			wrapper.classList.add("leaguetable")
 			wrapper.appendChild(this.getHeaderRow());
 			let matches = Object.keys(this.data).length;
 			for (let i = 0; i < matches; i++){
-				Log.log(i)
 				wrapper.appendChild(this.getDataRow(this.data[i].scheduled_at, this.data[i].league.name, this.data[i].opponents[0].opponent.name, this.data[i].opponents[1].opponent.name))
 			}
 			return wrapper;
