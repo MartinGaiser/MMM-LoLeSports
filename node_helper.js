@@ -77,16 +77,17 @@ module.exports = NodeHelper.create({
 	sendLeagueDataNotification: function(payload) {
 		let numberOfMatches = Object.keys(payload).length;
 		let matches = [];
-			for (let i = 0; i < numberOfMatches; i++){
-				matches.push(
-					{
-						"scheduled_at": payload[i].scheduled_at,
-						"leagueName": payload[i].league.name,
-						"team1": payload[i].opponents[0].opponent.acronym,
-						"team2": payload[i].opponents[1].opponent.acronym
-					}
-				);
-			}
+		Log.log(payload);
+		for (let i = 0; i < numberOfMatches; i++){
+			matches.push(
+				{
+					"scheduled_at": payload[i].scheduled_at,
+					"leagueName": payload[i].league.name,
+					"team1": payload[i].opponents[0].opponent.acronym,
+					"team2": payload[i].opponents[1].opponent.acronym
+				}
+			);
+		}
 		this.sendLeagueDataNotification("MMM-LoLeSports-GameData", matches);
 	},
 });
