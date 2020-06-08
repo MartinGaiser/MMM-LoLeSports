@@ -76,15 +76,15 @@ module.exports = NodeHelper.create({
 		console.log(payload);
 		let numberOfMatches = Object.keys(payload).length;
 		let matches = [];
+		let match = null;
 		for (let i = 0; i < numberOfMatches; i++){
-			matches.push(
-				{
-					"scheduled_at": payload[i].scheduled_at,
-					"team1": payload[i].opponents[0].opponent.acronym,
-					"team2": payload[i].opponents[1].opponent.acronym,
-					"leagueName": payload[i].league.name
-				}
-			);
+			match = {
+				"scheduled_at": payload[i].scheduled_at,
+				"team1": payload[i].opponents[0].opponent.acronym,
+				"team2": payload[i].opponents[1].opponent.acronym,
+				"leagueName": payload[i].league.name
+			}
+			matches.push(match);
 		}
 		this.sendLeagueDataNotification("MMM-LoLeSports-GameData", matches);
 	},
