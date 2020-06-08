@@ -23,7 +23,7 @@ Module.register("MMM-LoLeSports",{
 		dataCell.classList.add("leagueheader", "th");
 		let dateIcon = document.createElement('i');
         dateIcon.classList.add('fa', 'fa-calendar');
-		dateCell.appendChild(dateIcon);
+		dataCell.appendChild(dateIcon);
 		header.appendChild(dateCell);
 
 		dataCell = document.createElement("th");
