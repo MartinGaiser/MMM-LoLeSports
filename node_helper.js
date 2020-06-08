@@ -75,7 +75,7 @@ module.exports = NodeHelper.create({
 	},
 
 	sendLeagueDataNotification: function(payload) {
-		let numberOfMatches = Object.keys(this.leagueData).length;
+		let numberOfMatches = Object.keys(payload).length;
 		let matches = [];
 			for (let i = 0; i < numberOfMatches; i++){
 				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduled_at, this.leagueData[i].league.name, this.leagueData[i].opponents[0].opponent.name, this.leagueData[i].opponents[1].opponent.name))
