@@ -43,7 +43,6 @@ Module.register("MMM-LoLeSports",{
 		dataCell.classList.add("team2header","th");
 		dataCell.innerHTML = "Team 2 ";
 		header .appendChild(dataCell);
-		wrapper.appendChild(header);
 		return header;
 	},
 
@@ -78,7 +77,6 @@ Module.register("MMM-LoLeSports",{
 		dataCell.classList.add("team2","td");
 		dataCell.innerHTML = team2;
 		testRow.appendChild(dataCell);
-		wrapper.appendChild(testRow);
 
 		return testRow;
 	},
