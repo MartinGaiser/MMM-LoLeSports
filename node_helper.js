@@ -4,7 +4,7 @@
  * By Martin Gaiser
  * MIT Licensed.
  */
-
+var https = require('request');
 var NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
@@ -27,35 +27,42 @@ module.exports = NodeHelper.create({
 	},
 
 	getData: function(apiKey, xPerPage, league_ids, updateDelay) {
+
 		var urlApi = "https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=" + league_ids + "&sort=scheduled_at";
+		const options = {
+			url: urlApi,
+			headers: {
+			  "Authorization": "Bearer " + apiKey,
+			  "X-Page":1,
+			  "X-PerPage":xPerPage,
+			}
+		};
+
 		var retry = true;
 		var self = this;
 
-		var dataRequest = new XMLHttpRequest();
-		dataRequest.open("GET", urlApi, true);
-		dataRequest.setRequestHeader("Authorization","Bearer "+ apiKey)
-		dataRequest.setRequestHeader("X-Page", 1);
-		dataRequest.setRequestHeader("X-Per-Page", xPerPage); //TODO number of games variable
-		dataRequest.onreadystatechange = function() {
-			if (this.readyState === 4) {
-				if (this.status === 200) {
-					self.sendLeagueDataNotification(JSON.parse(this.response));
-				} else if (this.status === 401) {
-					self.sendUnauthorizedNotification("TODO")
-					Log.error(self.name, this.status);
-					retry = false;
-				} else {
-					self.sendErrorNotification("TODO");
-				}
-				if (!error){
-					//TODO find a way to get retry delay as variable
-					setTimeout(function(){
-						getData(apiKey, xPerPage, league_ids, updateDelay);
-					}, updateDelay);
-				}
+
+		const callback = function(error, response, body){
+			if (!error && response.statusCode == 200) {
+				self.sendLeagueDataNotification(JSON.parse(body));
+			}else if (!error && response.statusCode == 401){
+				self.sendUnauthorizedNotification();
+				Log.error("MMM-LoLeSports", this.status);
+				retry = false;
+			}else{
+				self.sendErrorNotification();
+				Log.error("MMM-LoLeSports", this.status);
+				retry = false;
 			}
-		};
-		dataRequest.send();
+			if (retry){
+				//TODO find a way to get retry delay as variable
+				setTimeout(function(){
+					getData(apiKey, xPerPage, league_ids, updateDelay);
+				}, updateDelay);
+			}
+		}
+		   
+		request(options, callback);
 	},	
 
 	// Example function send notification test
