@@ -73,7 +73,8 @@ module.exports = NodeHelper.create({
 	},
 
 	sendLeagueDataNotification: function(payload) {
-		let numberOfMatches = Object.keys(payload).length;
+		//let numberOfMatches = Object.keys(payload).length;
+		let numberOfMatches = 1;
 		let matches = [];
 		let match = null;
 		for (let i = 0; i < numberOfMatches; i++){
