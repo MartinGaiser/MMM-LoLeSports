@@ -47,13 +47,12 @@ Module.register("MMM-LoLeSports", {
 			this.sendSocketNotification("MMM-LoLeSports-StartFetching", this.config)
 			return wrapper;
 		}else{
-			var wrapperDataRequest = document.createElement("table");
-			wrapperDataRequest.classList.add("leaguetable")
-			wrapperDataRequest.innerHTML = this.dataRequest.title;
-			wrapperDataRequest.appendChild(this.getHeaderRow());
+			wrapper = document.createElement("table");
+			wrapper.classList.add("leaguetable")
+			wrapper.appendChild(this.getHeaderRow());
 			serieses = Object.keys(dataRequest).length;
 			for (var i = 0; i < serieses; i++){
-				wrapperDataRequest.appendChild(this.getDataRow(obj[i].scheduled_at, obj[i].league.name, obj[i].opponents[0].opponent.name, obj[i].opponents[1].opponent.name))
+				wrapper.appendChild(this.getDataRow(obj[i].scheduled_at, obj[i].league.name, obj[i].opponents[0].opponent.name, obj[i].opponents[1].opponent.name))
 			}
 			return wrapper;
 		}

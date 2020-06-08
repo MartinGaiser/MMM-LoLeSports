@@ -39,7 +39,7 @@ module.exports = NodeHelper.create({
 		dataRequest.onreadystatechange = function() {
 			if (this.readyState === 4) {
 				if (this.status === 200) {
-					self.processData(JSON.parse(this.response));
+					self.sendLeagueDataNotification(JSON.parse(this.response));
 				} else if (this.status === 401) {
 					self.sendUnauthorizedNotification("TODO")
 					Log.error(self.name, this.status);
@@ -56,11 +56,6 @@ module.exports = NodeHelper.create({
 			}
 		};
 		dataRequest.send();
-	},
-
-	processData: function(jsonObj){
-		//TODO get relevant informations from data and forward it to main-module.
-		this.sendLeagueDataNotification("Matches");
 	},	
 
 	// Example function send notification test
