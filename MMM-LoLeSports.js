@@ -28,30 +28,31 @@ Module.register("MMM-LoLeSports", {
 	getDom: function() {
 		var self = this;
 
-		// create element wrapper for show into the module
-		var wrapper = document.createElement("div");
-
 		if (this.error){
+			var wrapper = document.createElement("div");
 			wrapper.innerHTML = "Unknown Error ... check logs.";
 			return wrapper;
 		}
 
 		if (this.unauthorized){
+			var wrapper = document.createElement("div");
 			wrapper.innerHTML = "Unauthorized ...check API-Token";
 			return wrapper;
 		}
 
 		// If this.dataRequest is not empty
 		if (this.data == null) {
+			var wrapper = document.createElement("div");
 			wrapper.innerHTML = "Loading...";
 			this.sendSocketNotification("MMM-LoLeSports-StartFetching", this.config)
 			return wrapper;
 		}else{
-			wrapper = document.createElement("table");
+			var wrapper = document.createElement("table");
 			wrapper.classList.add("leaguetable")
 			wrapper.appendChild(this.getHeaderRow());
-			let serieses = Object.keys(this.data).length;
-			for (var i = 0; i < serieses; i++){
+			let matches = Object.keys(this.data).length;
+			for (let i = 0; i < matches; i++){
+				Log.log(i)
 				wrapper.appendChild(this.getDataRow(this.data[i].scheduled_at, this.data[i].league.name, this.data[i].opponents[0].opponent.name, this.data[i].opponents[1].opponent.name))
 			}
 			return wrapper;
