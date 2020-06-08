@@ -9,39 +9,38 @@
 }
 
 .MMM-LoLeSports .team1header {
-    font-weight: bolder;
+    font-weight: bold;
     border-top: 2px white;
     text-align: left;
 }
 
 .MMM-LoLeSports .team2header {
-    font-weight: bolder;
+    font-weight: bold;
     border-top: 2px white;
     text-align: right;
 }
 
 .MMM-LoLeSports .versusheader {
-    font-weight: bolder;
+    font-weight: bold;
     border-top: 2px white;
     text-align: center;
 }
 
 .MMM-LoLeSports .league {
-    font-weight: bold;
     text-align: left;
 }
 .MMM-LoLeSports .team1 {
-    font-weight: lighter;
+    font-size: small;
     text-align: left;
 }
 
 .MMM-LoLeSports .team2 {
-    font-weight: lighter;
+    font-size: small;
     text-align: right;
 }
 
 .MMM-LoLeSports .versus {
-    font-weight: bolder;
+    font-weight: bold;
     padding-left: 2px;
     padding-right: 2px;
     text-align: center;
