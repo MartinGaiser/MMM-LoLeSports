@@ -124,7 +124,7 @@ Module.register("MMM-LoLeSports", {
 	getStyles: function () {
 		return [
 			"MMM-LoLeSports.css",
-			"font-asesome.css",
+			"font-awesome.css",
 		];
 	},
 
