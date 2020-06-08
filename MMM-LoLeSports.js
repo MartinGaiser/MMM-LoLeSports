@@ -1,18 +1,39 @@
 Module.register("MMM-LoLeSports",{
 
     getDom: function() {
-		var wrapper = document.createElement("table");
-		wrapper.id = "Wrapper";
-		var header = document.createElement("tr");
-		header.appendChild((document.createElement("th")).innerHTML("League"));
-		header.appendChild((document.createElement("th")).innerHTML("Team 1"));
-		header.appendChild((document.createElement("th")).innerHTML("Team 2"));
+		let wrapper = document.createElement("table");
+		wrapper.id = "LOLESPORT-Table";
+
+
+		let header = document.createElement("tr");
+
+		let dataCell = document.createElement("td");
+		dataCell.innerHTML("LEC");
+		header.appendChild(dataCell);
+
+		dataCell = document.createElement("td");
+		dataCell.innerHTML("Team 1");
+		header.appendChild(dataCell);
+
+		dataCell = document.createElement("td");
+		dataCell.innerHTML("Team 2 ");
+		header .appendChild(dataCell);
 		wrapper.appendChild(header);
 
-		var testRow = document.createElement("tr");
-		header.appendChild((document.createElement("td")).innerHTML("LEC"));
-		header.appendChild((document.createElement("td")).innerHTML("Fanatic"));
-		header.appendChild((document.createElement("td")).innerHTML("G2 Esports"));
+
+		let testRow = document.createElement("tr");
+
+		dataCell = document.createElement("td");
+		dataCell.innerHTML("LEC");
+		testRow.appendChild(dataCell);
+
+		dataCell = document.createElement("td");
+		dataCell.innerHTML("Fanatic");
+		testRow.appendChild(dataCell);
+
+		dataCell = document.createElement("td");
+		dataCell.innerHTML("G2 Esports");
+		testRow.appendChild(dataCell);
 		wrapper.appendChild(testRow);
 
 		return wrapper;
