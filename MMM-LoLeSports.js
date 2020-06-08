@@ -50,7 +50,7 @@ Module.register("MMM-LoLeSports", {
 			wrapper = document.createElement("table");
 			wrapper.classList.add("leaguetable")
 			wrapper.appendChild(this.getHeaderRow());
-			serieses = Object.keys(dataRequest).length;
+			serieses = Object.keys(data).length;
 			for (var i = 0; i < serieses; i++){
 				wrapper.appendChild(this.getDataRow(obj[i].scheduled_at, obj[i].league.name, obj[i].opponents[0].opponent.name, obj[i].opponents[1].opponent.name))
 			}
