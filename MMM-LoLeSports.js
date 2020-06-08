@@ -40,14 +40,16 @@ Module.register("MMM-LoLeSports", {
 	 * get a URL request
 	 *
 	 */
-	getData: function() {1
+	getData: function() {
 		var self = this;
 
-		var urlApi = "https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=" + this.config.league_ids + "&page=1&per_page=" + this.config.numberOfGames + "&sort=scheduled_at&token=" + this.config.apiKey;
+		var urlApi = "https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=" + this.config.league_ids + "&page=1&per_page=" + this.config.numberOfGames + "&sort=scheduled_at";
 		var retry = true;
 
 		var dataRequest = new XMLHttpRequest();
 		dataRequest.open("GET", urlApi, true);
+		dataRequest.setRequestHeader("Access-Control-Allow-Origin", "*")
+		dataRequest.setRequestHeader("Authorization","Bearer "+ this.config.apiKey)
 		dataRequest.onreadystatechange = function() {
 			console.log(this.readyState);
 			if (this.readyState === 4) {
@@ -99,7 +101,6 @@ Module.register("MMM-LoLeSports", {
 		if (this.dataRequest) {
 			var wrapperDataRequest = document.createElement("table");
 			wrapperDataRequest.classList.add("leaguetable")
-			// check format https://jsonplaceholder.typicode.com/posts/1
 			wrapperDataRequest.innerHTML = this.dataRequest.title;
 			wrapperDataRequest.appendChild(this.getHeaderRow());
 			serieses = Object.keys(dataRequest).length;
