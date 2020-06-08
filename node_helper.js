@@ -79,10 +79,10 @@ module.exports = NodeHelper.create({
 		let match = null;
 		for (let i = 0; i < numberOfMatches; i++){
 			match = {
+				"leagueName": payload[i].league.name,
 				"scheduled_at": payload[i].scheduled_at,
 				"team1": payload[i].opponents[0].opponent.acronym,
-				"team2": payload[i].opponents[1].opponent.acronym,
-				"leagueName": payload[i].league.name
+				"team2": payload[i].opponents[1].opponent.acronym
 			}
 			matches.push(match);
 		}
