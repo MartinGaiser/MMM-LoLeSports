@@ -43,7 +43,7 @@ Module.register("MMM-LoLeSports", {
 	getData: function() {1
 		var self = this;
 
-		var urlApi = "https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=" + config.league_ids + "&page=1&per_page=" + numberOfGames + "&sort=scheduled_at&token=" + apiKey;
+		var urlApi = "https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=" + config.league_ids + "&page=1&per_page=" + config.numberOfGames + "&sort=scheduled_at&token=" + config.apiKey;
 		var retry = true;
 
 		var dataRequest = new XMLHttpRequest();
