@@ -11,21 +11,21 @@ Module.register("MMM-LoLeSports",{
 		let header = document.createElement("tr");
 
 		let dataCell = document.createElement("th");
-		dataCell.classList.add("headcell");
+		dataCell.classList.add("leagueheader");
 		dataCell.innerHTML = "League";
 		header.appendChild(dataCell);
 
 		dataCell = document.createElement("th");
-		dataCell.classList.add("headcell");
-		header.appendChild(dataCell);
-
-		dataCell = document.createElement("th");
-		dataCell.classList.add("headcell");
+		dataCell.classList.add("team1header");
 		dataCell.innerHTML = "Team 1";
 		header.appendChild(dataCell);
 
 		dataCell = document.createElement("th");
-		dataCell.classList.add("headcell");
+		dataCell.classList.add("versusheader");
+		header.appendChild(dataCell);
+
+		dataCell = document.createElement("th");
+		dataCell.classList.add("team2header");
 		dataCell.innerHTML = "Team 2 ";
 		header .appendChild(dataCell);
 		wrapper.appendChild(header);
