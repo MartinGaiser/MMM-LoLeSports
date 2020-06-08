@@ -43,7 +43,7 @@ Module.register("MMM-LoLeSports",{
 		dataCell.innerHTML = "Fanatic";
 		testRow.appendChild(dataCell);
 
-		testRow.appendChild(getVersusCell())
+		testRow.appendChild(this.getVersusCell())
 
 		dataCell = document.createElement("td");
 		dataCell.classList.add("team2");
