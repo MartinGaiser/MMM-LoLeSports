@@ -1,46 +1,16 @@
 .MMM-LoLeSports .leaguetable {
     border-collapse: collapse;
-    font-size: 70%;
+    font-size: 90%;
     color: white;
-}
-
-.MMM-LoLeSports .leagueheader {
-    font-weight: bold;
-    border-top: 2px solid white;
-    text-align: left;
-}
-
-.MMM-LoLeSports .team1header {
-    font-weight: bold;
-    border-top: 2px solid white;
     text-align: center;
 }
 
-.MMM-LoLeSports .team2header {
+.MMM-LoLeSports .th {
     font-weight: bold;
-    border-top: 2px solid white;
-    text-align: center;
-}
-
-.MMM-LoLeSports .versusheader {
-    font-weight: bold;
-    border-top: 2px solid white;
-    text-align: center;
-}
-
-.MMM-LoLeSports .league {
-    text-align: left;
-}
-.MMM-LoLeSports .team1 {
-    text-align: left;
-}
-
-.MMM-LoLeSports .team2 {
-    text-align: right;
+    border-bottom: 2px solid white;
 }
 
 .MMM-LoLeSports .versuscell {
     padding-left: 10px;
     padding-right: 10px;
-    text-align: center;
 }

@@ -1,0 +1,21 @@
+{
+    "name": "mmm-lolesports",
+    "version": "1.0.0",
+    "description": "League of Legends eSports calendar",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/MartinGaiser/MMM-LoLeSports.git"
+    },
+    "keywords": [
+      "MagicMirror",
+      "LoLeSports",
+      "League of Legends"
+    ],
+    "author": "Martin Gaiser",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/MartinGaiser/MMM-LoLeSports/issues"
+    },
+    "homepage": "https://github.com/MartinGaiser/MMM-LoLeSports#readme",
+    "dependencies": {}
+  }
