@@ -57,7 +57,7 @@ Module.register("MMM-LoLeSports",{
 	getDataRow: function(date, league, team1, team2){
 		let testRow = document.createElement("tr");
 
-		let dateCell = document.createElement("td")
+		let dataCell = document.createElement("td")
 		dataCell.classList.add("datecell","td");
 		dateCell.innerHTML = date;
 		testRow.appendChild(dateCell);
