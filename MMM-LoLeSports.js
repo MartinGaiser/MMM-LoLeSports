@@ -5,10 +5,10 @@ Module.register("MMM-LoLeSports",{
     getDom: function() {
 		let wrapper = document.createElement("table");
 		wrapper.id = "LOLESPORT-Table";
+		wrapper.classList.add("leaguetable");
 
 
 		let header = document.createElement("tr");
-		header.classList.add("tableheader");
 
 		let dataCell = document.createElement("th");
 		dataCell.classList.add("headcell");
