@@ -4,7 +4,7 @@
  * By Martin Gaiser
  * MIT Licensed.
  */
-var https = require('request');
+var request = require('request');
 var NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
