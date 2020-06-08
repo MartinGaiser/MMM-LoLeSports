@@ -8,15 +8,15 @@ Module.register("MMM-LoLeSports",{
 		let header = document.createElement("tr");
 
 		let dataCell = document.createElement("td");
-		dataCell.innerHTML("LEC");
+		dataCell.innerHTML = "LEC";
 		header.appendChild(dataCell);
 
 		dataCell = document.createElement("td");
-		dataCell.innerHTML("Team 1");
+		dataCell.innerHTML = "Team 1";
 		header.appendChild(dataCell);
 
 		dataCell = document.createElement("td");
-		dataCell.innerHTML("Team 2 ");
+		dataCell.innerHTML = "Team 2 ";
 		header .appendChild(dataCell);
 		wrapper.appendChild(header);
 
@@ -24,15 +24,15 @@ Module.register("MMM-LoLeSports",{
 		let testRow = document.createElement("tr");
 
 		dataCell = document.createElement("td");
-		dataCell.innerHTML("LEC");
+		dataCell.innerHTML = "LEC";
 		testRow.appendChild(dataCell);
 
 		dataCell = document.createElement("td");
-		dataCell.innerHTML("Fanatic");
+		dataCell.innerHTML = "Fanatic";
 		testRow.appendChild(dataCell);
 
 		dataCell = document.createElement("td");
-		dataCell.innerHTML("G2 Esports");
+		dataCell.innerHTML ="G2 Esports";
 		testRow.appendChild(dataCell);
 		wrapper.appendChild(testRow);
 
