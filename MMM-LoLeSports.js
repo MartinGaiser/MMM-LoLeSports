@@ -52,7 +52,7 @@ Module.register("MMM-LoLeSports", {
 			wrapper.appendChild(this.getHeaderRow());
 			serieses = Object.keys(this.data).length;
 			for (var i = 0; i < serieses; i++){
-				wrapper.appendChild(this.getDataRow(obj[i].scheduled_at, obj[i].league.name, obj[i].opponents[0].opponent.name, obj[i].opponents[1].opponent.name))
+				wrapper.appendChild(this.getDataRow(this.data[i].scheduled_at, this.data[i].league.name, this.data[i].opponents[0].opponent.name, this.data[i].opponents[1].opponent.name))
 			}
 			return wrapper;
 		}
