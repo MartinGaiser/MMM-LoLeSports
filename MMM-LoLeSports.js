@@ -1,4 +1,4 @@
-Module.register("lolesports",{
+Module.register("MMM-LoLeSports",{
 
     getDom: function() {
 		var wrapper = document.createElement("table");
@@ -16,5 +16,9 @@ Module.register("lolesports",{
 		wrapper.appendChild(testRow);
 
 		return wrapper;
-	}
+	},
+
+	start: function() {
+		Log.info("Starting module: " + this.name);
+	},
 })
