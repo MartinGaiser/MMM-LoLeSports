@@ -10,7 +10,10 @@
 Module.register("MMM-LoLeSports", {
 	defaults: {
 		updateInterval: 60000,
-		retryDelay: 5000
+		retryDelay: 5000,
+		apiKey: "nokey",
+		league_ids: 4302,
+		numberOfGames: 5,
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
@@ -19,7 +22,7 @@ Module.register("MMM-LoLeSports", {
 		Log.info("Starting module: " + this.name);
 		var self = this;
 		var dataRequest = null;
-		var dataNotification = null;
+		
 
 		//Flag for check if module is loaded
 		this.loaded = false;
@@ -37,10 +40,10 @@ Module.register("MMM-LoLeSports", {
 	 * get a URL request
 	 *
 	 */
-	getData: function() {
+	getData: function() {1
 		var self = this;
 
-		var urlApi = "https://jsonplaceholder.typicode.com/posts/1";
+		var urlApi = "https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=" + config.league_ids + "&page=1&per_page=" + numberOfGames + "&sort=scheduled_at&token=" + apiKey;
 		var retry = true;
 
 		var dataRequest = new XMLHttpRequest();
@@ -87,32 +90,24 @@ Module.register("MMM-LoLeSports", {
 
 	getDom: function() {
 		var self = this;
+		
 
 		// create element wrapper for show into the module
 		var wrapper = document.createElement("div");
+
 		// If this.dataRequest is not empty
 		if (this.dataRequest) {
-			var wrapperDataRequest = document.createElement("div");
+			var wrapperDataRequest = document.createElement("table");
+			wrapperDataRequest.classList.add("leaguetable")
 			// check format https://jsonplaceholder.typicode.com/posts/1
 			wrapperDataRequest.innerHTML = this.dataRequest.title;
-
-			var labelDataRequest = document.createElement("label");
-			// Use translate function
-			//             this id defined in translations files
-			labelDataRequest.innerHTML = this.translate("TITLE");
-
-
-			wrapper.appendChild(labelDataRequest);
-			wrapper.appendChild(wrapperDataRequest);
-		}
-
-		// Data from helper
-		if (this.dataNotification) {
-			var wrapperDataNotification = document.createElement("div");
-			// translations  + datanotification
-			wrapperDataNotification.innerHTML =  this.translate("UPDATE") + ": " + this.dataNotification.date;
-
-			wrapper.appendChild(wrapperDataNotification);
+			wrapperDataRequest.appendChild(this.getHeaderRow());
+			serieses = Object.keys(dataRequest).length;
+			for (var i = 0; i < serieses; i++){
+				wrapperDataRequest.appendChild(this.getDataRow(obj[i].scheduled_at, obj[i].league.name, obj[i].opponents[0].opponent.name, obj[i].opponents[1].opponent.name))
+			}
+		}else{
+			wrapper.innerHTML("Loading...")
 		}
 		return wrapper;
 	},
@@ -142,19 +137,6 @@ Module.register("MMM-LoLeSports", {
 		this.dataRequest = data;
 		if (this.loaded === false) { self.updateDom(self.config.animationSpeed) ; }
 		this.loaded = true;
-
-		// the data if load
-		// send notification to helper
-		this.sendSocketNotification("MMM-LoLeSports-NOTIFICATION_TEST", data);
-	},
-
-	// socketNotificationReceived from helper
-	socketNotificationReceived: function (notification, payload) {
-		if(notification === "MMM-LoLeSports-NOTIFICATION_TEST") {
-			// set dataNotification
-			this.dataNotification = payload;
-			this.updateDom();
-		}
 	},
 
 	getHeaderRow: function(){
