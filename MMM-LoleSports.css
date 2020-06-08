@@ -1,17 +1,17 @@
-th {
+.MMM-LoLeSports .th {
     background-color: #b0b0b0;
     color: white;
 }
 
-tr:nth-child(even) {background-color: #5f5f5f;}
-tr:nth-child(odd) {background-color: #000000;}
-td:first-child {
+.MMM-LoLeSports .tr:nth-child(even) {background-color: #5f5f5f;}
+.MMM-LoLeSports .tr:nth-child(odd) {background-color: #000000;}
+.MMM-LoLeSports .td:first-child {
     font-weight: bold;
 }
-td:nth-child(1n){
+.MMM-LoLeSports .td:nth-child(1n){
     font-weight: lighter;
 }
 
-td:nth-child(2n){
+.MMM-LoLeSports .td:nth-child(2n){
     font-weight: lighter;
 }
