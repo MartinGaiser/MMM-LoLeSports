@@ -12,7 +12,6 @@ Module.register("MMM-LoLeSports",{
 
 		let dataCell = document.createElement("th");
 		dataCell.classList.add("leagueheader");
-		dataCell.innerHTML = "League";
 		header.appendChild(dataCell);
 
 		dataCell = document.createElement("th");
