@@ -54,12 +54,12 @@ module.exports = NodeHelper.create({
 				Log.error("MMM-LoLeSports", this.status);
 				retry = false;
 			}
-			/*if (retry){
+			if (retry){
 				//TODO find a way to get retry delay as variable
 				setTimeout(function(){
 					getData(apiKey, xPerPage, league_ids, updateDelay);
 				}, updateDelay);
-			}*/
+			}
 		}
 		   
 		request(options, callback);
@@ -75,6 +75,19 @@ module.exports = NodeHelper.create({
 	},
 
 	sendLeagueDataNotification: function(payload) {
-		this.sendLeagueDataNotification("MMM-LoLeSports-GameData", payload);
+		let numberOfMatches = Object.keys(this.leagueData).length;
+		let matches = [];
+			for (let i = 0; i < numberOfMatches; i++){
+				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduled_at, this.leagueData[i].league.name, this.leagueData[i].opponents[0].opponent.name, this.leagueData[i].opponents[1].opponent.name))
+				matches.push(
+					{
+						"scheduled_at": this.leagueData[i].scheduled_at,
+						"leagueName": this.leagueData[i].league.name,
+						"team1": this.leagueData[i].opponents[0].opponent.name,
+						"team2": this.leagueData[i].opponents[1].opponent.name
+					}
+				);
+			}
+		this.sendLeagueDataNotification("MMM-LoLeSports-GameData", matches);
 	},
 });
