@@ -47,11 +47,9 @@ module.exports = NodeHelper.create({
 				self.sendLeagueDataNotification(JSON.parse(body));
 			}else if (!error && response.statusCode == 401){
 				self.sendUnauthorizedNotification();
-				Log.error("MMM-LoLeSports", this.status);
 				retry = false;
 			}else{
 				self.sendErrorNotification();
-				Log.error("MMM-LoLeSports", this.status);
 				retry = false;
 			}
 			if (retry){
@@ -77,14 +75,13 @@ module.exports = NodeHelper.create({
 	sendLeagueDataNotification: function(payload) {
 		let numberOfMatches = Object.keys(payload).length;
 		let matches = [];
-		Log.log(payload);
 		for (let i = 0; i < numberOfMatches; i++){
 			matches.push(
 				{
 					"scheduled_at": payload[i].scheduled_at,
-					"leagueName": payload[i].league.name,
 					"team1": payload[i].opponents[0].opponent.acronym,
-					"team2": payload[i].opponents[1].opponent.acronym
+					"team2": payload[i].opponents[1].opponent.acronym,
+					"leagueName": payload[i].league.name
 				}
 			);
 		}
