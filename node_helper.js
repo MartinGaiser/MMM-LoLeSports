@@ -22,6 +22,7 @@ module.exports = NodeHelper.create({
 		if (notification === "MMM-LoLeSports-StartFetching") {
 			console.log("Starting to Fetch League Matches");
 			let config = payload;
+			moment.updateLocale(config.league, this.getLocaleSpecification(config.timeFormat));
 			//Start Interval Fething of Data
 			this.getData(config.apiKey, config.numberOfGames, config.league_ids, config.updateInterval);
 		}
@@ -95,4 +96,22 @@ module.exports = NodeHelper.create({
 		}
 		this.sendSocketNotification("MMM-LoLeSports-GameData", matches);
 	},
+
+	getLocaleSpecification: function(timeFormat) {
+		switch (timeFormat) {
+		case 12: {
+			return { longDateFormat: {LT: "h:mm A"} };
+			break;
+		}
+		case 24: {
+			return { longDateFormat: {LT: "HH:mm"} };
+			break;
+		}
+		default: {
+			return { longDateFormat: {LT: moment.localeData().longDateFormat("LT")} };
+			break;
+		}
+		}
+	},
+
 });
