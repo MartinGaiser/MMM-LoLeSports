@@ -13,6 +13,8 @@ Module.register("MMM-LoLeSports", {
 		apiKey: "nokey",
 		league_ids: 4302,
 		numberOfGames: 5,
+		timeFormat: 24,
+		language: "de"
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
