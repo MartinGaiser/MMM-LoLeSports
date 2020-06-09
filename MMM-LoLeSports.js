@@ -73,6 +73,10 @@ Module.register("MMM-LoLeSports", {
 		}
 	},
 
+	getScripts: function () {
+		return ["moment.js"];
+	},
+
 	getStyles: function () {
 		return [
 			"MMM-LoLeSports.css",
@@ -131,6 +135,7 @@ Module.register("MMM-LoLeSports", {
 	getDataRow: function(date, league, team1, team2){
 		let testRow = document.createElement("tr");
 
+		
 		let dataCell = document.createElement("td")
 		dataCell.classList.add("datecell","td");
 		dataCell.innerHTML = date;

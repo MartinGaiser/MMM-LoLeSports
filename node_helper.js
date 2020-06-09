@@ -6,6 +6,7 @@
  */
 var request = require('request');
 var NodeHelper = require("node_helper");
+var moment = require("moment");
 
 module.exports = NodeHelper.create({
 
@@ -83,6 +84,7 @@ module.exports = NodeHelper.create({
 			let scheduled_at = payload[i].scheduled_at;
 			let team1 = payload[i].opponents[0].opponent.acronym;
 			let team2 = payload[i].opponents[1].opponent.acronym;
+			scheduled_at = moment(scheduled_at).calendar();
 			match = {
 				"leagueName": leagueName,
 				"scheduled_at": scheduled_at,
