@@ -77,7 +77,7 @@ module.exports = NodeHelper.create({
 		let numberOfMatches = Object.keys(payload).length;
 		let matches = [];
 		let match = null;
-		for (i = 0; i < numberOfMatches; i++){
+		for (i = 0; i < numberOfMatches-1; i++){
 			console.error(i);
 			let leagueName = payload[i].league.name;
 			let schedule_at = payload[i].schedule_at;
