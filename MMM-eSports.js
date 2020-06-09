@@ -133,7 +133,6 @@ Module.register("MMM-eSports", {
 
 	getDataRow: function(date, league, leagueImageURL, team1,team1Url, team2, team2Url){
 		let row = document.createElement("tr");
-		row.classList.add("normal");
 
 		
 		row.appendChild(this.getDateCell(date));
