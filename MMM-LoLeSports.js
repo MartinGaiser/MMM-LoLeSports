@@ -154,6 +154,8 @@ Module.register("MMM-LoLeSports", {
 		let image = document.createElement("img");
 		image.classList.add("leagueIcon", "img");
 		image.setAttribute("src", leagueImageURL);
+		dataCell.appendChild(iamge);
+		testRow.appendChild(dataCell);
 
 		dataCell = document.createElement("td");
 		dataCell.classList.add("team1","td");
