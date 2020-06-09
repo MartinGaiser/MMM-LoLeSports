@@ -52,7 +52,7 @@ Module.register("MMM-eSports", {
 			return wrapper;
 		}else{
 			var wrapper = document.createElement("table");
-			wrapper.classList.add("leaguetable")
+			wrapper.classList.add("leaguetable", "small");
 			wrapper.appendChild(this.getHeaderRow());
 			for (let i = 0; i < this.leagueData.length; i++){
 				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduled_at, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
