@@ -31,15 +31,15 @@
 }
 
 .MMM-eSports .leagueIcon {
-    max-width: 2em;
-    max-height: 2em;
+    max-width: 1em;
+    max-height: 1em;
     background-color: white;
     border-radius: 20%;
 }
 
 .MMM-eSports .teamIcon {
-    max-width: 2em;
-    max-height: 2em;
+    max-width: 1em;
+    max-height: 1em;
     background-color: white;
     border-radius: 20%;
 }
