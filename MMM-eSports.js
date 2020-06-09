@@ -131,21 +131,13 @@ Module.register("MMM-eSports", {
 		return header;
 	},
 
-	getVersusCell: function(){
-		let versusCell = document.createElement("td");
-		versusCell.classList.add("versuscell", "td");
-		versusCell.innerHTML = "VS"
-		return versusCell;
-	},
+	
 
 	getDataRow: function(date, league, leagueImageURL, team1,team1Url, team2, team2Url){
 		let row = document.createElement("tr");
 
 		
-		let dataCell = document.createElement("td")
-		dataCell.classList.add("datecell","td");
-		dataCell.innerHTML = date;
-		row.appendChild(dataCell);
+		row.appendChild(this.getDateCell(date));
 
 		if(this.config.leagueAsImage){
 			row.appendChild(this.getLeagueAsImage(leagueImageURL));
@@ -166,6 +158,20 @@ Module.register("MMM-eSports", {
 		}
 
 		return row;
+	},
+
+	getDateCell: function(date){
+		let dataCell = document.createElement("td")
+		dataCell.classList.add("datecell","td");
+		dataCell.innerHTML = date;
+		return dataCell;
+	},
+
+	getVersusCell: function(){
+		let versusCell = document.createElement("td");
+		versusCell.classList.add("versuscell", "td");
+		versusCell.innerHTML = "VS"
+		return versusCell;
 	},
 
 	getLeagueAsImage: function(iconUrl){
@@ -198,6 +204,7 @@ Module.register("MMM-eSports", {
 
 	getTeamAsText: function(teamText){
 		dataCell = document.createElement("td");
+		dataCell.classList.add("teamText");
 		dataCell.innerHTML = teamText;
 		return dataCell;
 	}

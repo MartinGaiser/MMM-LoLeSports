@@ -16,13 +16,16 @@
 }
 
 .MMM-eSports .th {
-    font-weight: bold;
     border-bottom: 2px solid white;
 }
 
 .MMM-eSports .leagueCell{
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.MMM-eSports .td{
+    font-size: 0.8em;
 }
 
 .MMM-eSports .versuscell {
