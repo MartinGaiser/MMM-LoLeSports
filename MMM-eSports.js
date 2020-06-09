@@ -10,7 +10,6 @@
 Module.register("MMM-eSports", {
 	defaults: {
 		updateInterval: 350000,
-		size: "60%",
 		apiKey: "nokey",
 		league_ids: "4302",
 		numberOfGames: 10,
@@ -54,7 +53,6 @@ Module.register("MMM-eSports", {
 		}else{
 			var wrapper = document.createElement("table");
 			wrapper.classList.add("leaguetable")
-			wrapper.setAttribute("font-size", this.config.size)
 			wrapper.appendChild(this.getHeaderRow());
 			for (let i = 0; i < this.leagueData.length; i++){
 				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduled_at, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
@@ -135,6 +133,7 @@ Module.register("MMM-eSports", {
 
 	getDataRow: function(date, league, leagueImageURL, team1,team1Url, team2, team2Url){
 		let row = document.createElement("tr");
+		row.classList.add("normal");
 
 		
 		row.appendChild(this.getDateCell(date));
