@@ -180,7 +180,7 @@ Module.register("MMM-LoLeSports", {
 	getLeagueAsText: function(leagueText){
 		let dataCell = document.createElement("td");
 		dataCell.classList.add("leagueCell","td");
-		dataCell.innerHTML = league;
+		dataCell.innerHTML = leagueText;
 		return dataCell;
 
 	},
