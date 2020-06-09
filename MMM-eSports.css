@@ -12,7 +12,13 @@
  .MMM-eSports .leaguetable {
     border-collapse: collapse;
     color: white;
+    line-height: 1;
     text-align: center; 
+}
+
+.MMM-eSports .dateCell{
+    font-size: 0.8em;
+    color: rgb(182, 182, 182);
 }
 
 .MMM-eSports .th {
@@ -31,6 +37,7 @@
 .MMM-eSports .versuscell {
     padding-left: 15px;
     padding-right: 15px;
+    font-size: 0.8em;
 }
 
 .MMM-eSports .leagueIcon {
