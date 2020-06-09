@@ -9,7 +9,7 @@
 
 Module.register("MMM-LoLeSports", {
 	defaults: {
-		updateInterval: 60000,
+		updateInterval: 350000,
 		apiKey: "nokey",
 		league_ids: 4302,
 		numberOfGames: 5,
