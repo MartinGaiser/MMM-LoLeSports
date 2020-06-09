@@ -85,12 +85,14 @@ module.exports = NodeHelper.create({
 			let scheduled_at = payload[i].scheduled_at;
 			let team1 = payload[i].opponents[0].opponent.acronym;
 			let team2 = payload[i].opponents[1].opponent.acronym;
+			let leagueImage = payload[i].league.image_url;
 			scheduled_at = moment(scheduled_at).calendar();
 			match = {
 				"leagueName": leagueName,
 				"scheduled_at": scheduled_at,
 				"team1": team1,
-				"team2": team2
+				"team2": team2,
+				"leagueImage": leagueImage
 			}
 			matches.push(match);
 		}
@@ -101,15 +103,12 @@ module.exports = NodeHelper.create({
 		switch (timeFormat) {
 		case 12: {
 			return { longDateFormat: {LT: "h:mm A"} };
-			break;
 		}
 		case 24: {
 			return { longDateFormat: {LT: "HH:mm"} };
-			break;
 		}
 		default: {
 			return { longDateFormat: {LT: moment.localeData().longDateFormat("LT")} };
-			break;
 		}
 		}
 	},

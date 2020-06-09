@@ -54,7 +54,8 @@ Module.register("MMM-LoLeSports", {
 			wrapper.classList.add("leaguetable")
 			wrapper.appendChild(this.getHeaderRow());
 			for (let i = 0; i < this.leagueData.length; i++){
-				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduled_at, this.leagueData[i].leagueName, this.leagueData[i].team1, this.leagueData[i].team2))
+				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduled_at, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
+					 this.leagueData[i].team1, this.leagueData[i].team2))
 			}
 			return wrapper;
 		}
@@ -134,7 +135,7 @@ Module.register("MMM-LoLeSports", {
 		return versusCell;
 	},
 
-	getDataRow: function(date, league, team1, team2){
+	getDataRow: function(date, league,leagueImageURL, team1, team2){
 		let testRow = document.createElement("tr");
 
 		
@@ -147,6 +148,12 @@ Module.register("MMM-LoLeSports", {
 		dataCell.classList.add("league","td");
 		dataCell.innerHTML = league;
 		testRow.appendChild(dataCell);
+
+		dataCell = document.createElement("td");
+		dataCell.classList.add("leagueIconCell", "td");
+		let image = document.createElement(img);
+		image.classList.add("leagueIcon", "img");
+		image.setAttribute("src", leagueImageURL);
 
 		dataCell = document.createElement("td");
 		dataCell.classList.add("team1","td");
