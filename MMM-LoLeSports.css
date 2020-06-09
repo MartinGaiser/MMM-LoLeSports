@@ -32,6 +32,7 @@
 }
 
 .MMM-LoLeSports .leagueIcon {
-    width: 20px;
-    height: 20px;
+    width: auto;
+    height: 2em;
+    filter: grayscale(1) brightness(4);
 }
