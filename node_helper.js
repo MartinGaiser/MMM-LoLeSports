@@ -24,7 +24,7 @@ module.exports = NodeHelper.create({
 			let config = payload;
 			moment.updateLocale(config.language, this.getLocaleSpecification(config.timeFormat));
 			//Start Interval Fething of Data
-			this.getData(config.apiKey, config.numberOfGames, config.league_ids, config.updateInterval);
+			this.getData(config.apiKey, config.numberOfGames, config.league_ids, config.updateInterval*1000);
 		}
 	},
 
