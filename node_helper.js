@@ -78,12 +78,12 @@ module.exports = NodeHelper.create({
 		let match = null;
 		for (i = 0; i < numberOfMatches-1; i++){
 			let leagueName = payload[i].league.name;
-			let schedule_at = payload[i].schedule_at;
+			let scheduled_at = payload[i].scheduled_at;
 			let team1 = payload[i].opponents[0].opponent.acronym;
 			let team2 = payload[i].opponents[1].opponent.acronym;
 			match = {
 				"leagueName": leagueName,
-				"scheduled_at": schedule_at,
+				"scheduled_at": scheduled_at,
 				"team1": team1,
 				"team2": team2
 			}
