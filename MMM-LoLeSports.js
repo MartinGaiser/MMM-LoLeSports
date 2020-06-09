@@ -12,9 +12,11 @@ Module.register("MMM-LoLeSports", {
 		updateInterval: 350000,
 		apiKey: "nokey",
 		league_ids: 4302,
-		numberOfGames: 5,
+		numberOfGames: 7,
 		timeFormat: 24,
-		language: "de"
+		language: "de",
+		leagueAsImage: false,
+		teamAsImage: false
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
@@ -55,7 +57,7 @@ Module.register("MMM-LoLeSports", {
 			wrapper.appendChild(this.getHeaderRow());
 			for (let i = 0; i < this.leagueData.length; i++){
 				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduled_at, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
-					 this.leagueData[i].team1, this.leagueData[i].team2))
+					 this.leagueData[i].team1,this.leagueData[i].team1Url, this.leagueData[i].team2, this.leagueData[i].team2Url))
 			}
 			return wrapper;
 		}
@@ -135,40 +137,67 @@ Module.register("MMM-LoLeSports", {
 		return versusCell;
 	},
 
-	getDataRow: function(date, league,leagueImageURL, team1, team2){
-		let testRow = document.createElement("tr");
+	getDataRow: function(date, league, leagueImageURL, team1,team1Url, team2, team2Url){
+		let row = document.createElement("tr");
 
 		
 		let dataCell = document.createElement("td")
 		dataCell.classList.add("datecell","td");
 		dataCell.innerHTML = date;
-		testRow.appendChild(dataCell);
+		row.appendChild(dataCell);
 
-		dataCell = document.createElement("td");
-		dataCell.classList.add("league","td");
-		dataCell.innerHTML = league;
-		testRow.appendChild(dataCell);
+		if(this.config.leagueAsImage){
+			row.appendChild(this.getLeagueAsImage(leagueImageURL));
+		}else{
+			row.appendChild(this.getLeagueAsText(league));
+		}
 
-		dataCell = document.createElement("td");
-		dataCell.classList.add("leagueIconCell", "td");
+		if(this.config.teamAsImage){
+			row.appendChild(this.getTeamAsImage(team1Url));
+		}else{
+			row.appendChild(this.getTeamAsImage(team1));
+		}
+		row.appendChild(this.getVersusCell());
+		if(this.config.teamAsImage){
+			row.appendChild(this.getTeamAsImage(team2Url));
+		}else{
+			row.appendChild(this.getTeamAsImage(team2));
+		}
+
+		return row;
+	},
+
+	getLeagueAsImage: function(iconUrl){
+		let dataCell = document.createElement("td");
+		dataCell.classList.add("leagueCell", "td");
 		let image = document.createElement("img");
 		image.classList.add("leagueIcon", "img");
-		image.setAttribute("src", leagueImageURL);
+		image.setAttribute("src", iconUrl);
 		dataCell.appendChild(image);
-		testRow.appendChild(dataCell);
-
-		dataCell = document.createElement("td");
-		dataCell.classList.add("team1","td");
-		dataCell.innerHTML = team1;
-		testRow.appendChild(dataCell);
-
-		testRow.appendChild(this.getVersusCell())
-
-		dataCell = document.createElement("td");
-		dataCell.classList.add("team2","td");
-		dataCell.innerHTML = team2;
-		testRow.appendChild(dataCell);
-
-		return testRow;
+		return dataCell;
 	},
+
+	getLeagueAsText: function(leagueText){
+		let dataCell = document.createElement("td");
+		dataCell.classList.add("leagueCell","td");
+		dataCell.innerHTML = league;
+		return dataCell;
+
+	},
+
+	getTeamAsImage: function(iconUrl){
+		let dataCell = document.createElement("td");
+		dataCell.classList.add("teamIconCell", "td");
+		let image = document.createElement("img");
+		image.classList.add("teamIcon", "img");
+		image.setAttribute("src", iconUrl);
+		dataCell.appendChild(image);
+		return dataCell;
+	},
+
+	getTeamAsText: function(teamText){
+		dataCell = document.createElement("td");
+		dataCell.innerHTML = teamText;
+		return dataCell;
+	}
 });

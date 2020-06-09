@@ -85,6 +85,8 @@ module.exports = NodeHelper.create({
 			let scheduled_at = payload[i].scheduled_at;
 			let team1 = payload[i].opponents[0].opponent.acronym;
 			let team2 = payload[i].opponents[1].opponent.acronym;
+			let team1Url = payload[i].opponents[0].opponent.image_url;
+			let team2Url = payload[i].opponents[1].opponent.image_url;
 			let leagueImage = payload[i].league.image_url;
 			scheduled_at = moment(scheduled_at).calendar();
 			match = {
@@ -92,7 +94,9 @@ module.exports = NodeHelper.create({
 				"scheduled_at": scheduled_at,
 				"team1": team1,
 				"team2": team2,
-				"leagueImage": leagueImage
+				"leagueImage": leagueImage,
+				"team1Url": team1Url,
+				"team2Url": team2Url
 			}
 			matches.push(match);
 		}

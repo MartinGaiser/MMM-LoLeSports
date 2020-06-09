@@ -11,7 +11,7 @@
  
  .MMM-LoLeSports .leaguetable {
     border-collapse: collapse;
-    font-size: 90%;
+    font-size: 80%;
     color: white;
     text-align: center;
 }
@@ -21,14 +21,14 @@
     border-bottom: 2px solid white;
 }
 
-.MMM-LoLeSports .league{
-    padding-left: 10px;
-    padding-right: 10px;
+.MMM-LoLeSports .leagueCell{
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .MMM-LoLeSports .versuscell {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .MMM-LoLeSports .leagueIcon {
