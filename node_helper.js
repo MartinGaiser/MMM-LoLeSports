@@ -22,7 +22,7 @@ module.exports = NodeHelper.create({
 		if (notification === "MMM-LoLeSports-StartFetching") {
 			console.log("Starting to Fetch League Matches");
 			let config = payload;
-			moment.updateLocale(config.league, this.getLocaleSpecification(config.timeFormat));
+			moment.updateLocale(config.language, this.getLocaleSpecification(config.timeFormat));
 			//Start Interval Fething of Data
 			this.getData(config.apiKey, config.numberOfGames, config.league_ids, config.updateInterval);
 		}
