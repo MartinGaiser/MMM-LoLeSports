@@ -1,13 +1,13 @@
 /* global Module */
 
 /* Magic Mirror
- * Module: MMM-LoLeSports
+ * Module: MMM-eSports
  *
  * By Martin Gaiser
  * MIT Licensed.
  */
 
-Module.register("MMM-LoLeSports", {
+Module.register("MMM-eSports", {
 	defaults: {
 		updateInterval: 350000,
 		size: "60%",
@@ -49,7 +49,7 @@ Module.register("MMM-LoLeSports", {
 		if (this.leagueData == null) {
 			var wrapper = document.createElement("div");
 			wrapper.innerHTML = "Loading...";
-			this.sendSocketNotification("MMM-LoLeSports-StartFetching", this.config)
+			this.sendSocketNotification("MMM-eSports-StartFetching", this.config)
 			return wrapper;
 		}else{
 			var wrapper = document.createElement("table");
@@ -65,15 +65,15 @@ Module.register("MMM-LoLeSports", {
 	},
 
 	socketNotificationReceived: function(notification, payload){
-		if (notification == "MMM-LoLeSports-Unauthorized"){
+		if (notification == "MMM-eSports-Unauthorized"){
 			this.unauthorized = true;
 			this.updateDom();
 		}
-		if (notification == "MMM-LoLeSports-Error"){
+		if (notification == "MMM-eSports-Error"){
 			this.error = true;
 			this.updateDom();
 		}
-		if (notification == "MMM-LoLeSports-GameData"){
+		if (notification == "MMM-eSports-GameData"){
 			this.leagueData = payload;
 			this.updateDom();
 		}
@@ -85,7 +85,7 @@ Module.register("MMM-LoLeSports", {
 
 	getStyles: function () {
 		return [
-			"MMM-LoLeSports.css",
+			"MMM-eSports.css",
 			"font-awesome.css",
 		];
 	},

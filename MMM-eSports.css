@@ -1,6 +1,6 @@
 /*
  *
- * MMM-LoLeSports
+ * MMM-eSports
  *
  * Martin Gaiser
  * MIT Licensed.
@@ -9,35 +9,35 @@
  *
  */
  
- .MMM-LoLeSports .leaguetable {
+ .MMM-eSports .leaguetable {
     border-collapse: collapse;
     color: white;
     text-align: center;
 }
 
-.MMM-LoLeSports .th {
+.MMM-eSports .th {
     font-weight: bold;
     border-bottom: 2px solid white;
 }
 
-.MMM-LoLeSports .leagueCell{
+.MMM-eSports .leagueCell{
     padding-left: 15px;
     padding-right: 15px;
 }
 
-.MMM-LoLeSports .versuscell {
+.MMM-eSports .versuscell {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-.MMM-LoLeSports .leagueIcon {
+.MMM-eSports .leagueIcon {
     max-width: 2em;
     max-height: 2em;
     background-color: white;
     border-radius: 20%;
 }
 
-.MMM-LoLeSports .teamIcon {
+.MMM-eSports .teamIcon {
     max-width: 2em;
     max-height: 2em;
     background-color: white;

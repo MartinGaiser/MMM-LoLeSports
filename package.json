@@ -1,8 +1,8 @@
 {
-  "name": "MMM-LoLeSports",
+  "name": "mmm-esports",
   "version": "1.0.0",
   "description": "Todo: Insert description here!",
-  "main": "MMM-LoLeSports.js",
+  "main": "MMM-eSports.js",
   "author": "Martin Gaiser",
   "license": "MIT",
   "devDependencies": {

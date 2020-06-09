@@ -1,5 +1,5 @@
 /* Magic Mirror
- * Node Helper: MMM-LoLeSports
+ * Node Helper: MMM-eSports
  *
  * By Martin Gaiser
  * MIT Licensed.
@@ -19,7 +19,7 @@ module.exports = NodeHelper.create({
 	 * argument payload mixed - The payload of the notification.
 	 */
 	socketNotificationReceived: function(notification, payload) {
-		if (notification === "MMM-LoLeSports-StartFetching") {
+		if (notification === "MMM-eSports-StartFetching") {
 			console.log("Starting to Fetch League Matches");
 			let config = payload;
 			moment.updateLocale(config.language, this.getLocaleSpecification(config.timeFormat));
@@ -69,11 +69,11 @@ module.exports = NodeHelper.create({
 
 	// Example function send notification test
 	sendUnauthorizedNotification: function(payload) {
-		this.sendSocketNotification("MMM-LoLeSports-Unauthorized", payload);
+		this.sendSocketNotification("MMM-eSports-Unauthorized", payload);
 	},
 
 	sendErrorNotification: function(payload) {
-		this.sendSocketNotification("MMM-LoLeSports-Error",payload);
+		this.sendSocketNotification("MMM-eSports-Error",payload);
 	},
 
 	sendLeagueDataNotification: function(payload) {
@@ -100,7 +100,7 @@ module.exports = NodeHelper.create({
 			}
 			matches.push(match);
 		}
-		this.sendSocketNotification("MMM-LoLeSports-GameData", matches);
+		this.sendSocketNotification("MMM-eSports-GameData", matches);
 	},
 
 	getLocaleSpecification: function(timeFormat) {
