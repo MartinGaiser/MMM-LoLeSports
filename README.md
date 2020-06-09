@@ -6,7 +6,7 @@ This Module displays upcoming matches for eSports leagues. The Data is retrieved
 The Module should support all Games that are delivered by Pandascore. I only tested League of Legends so far. No guarantee that it will work the other games as LoL. The free Pandascore-Account allowes up to 1000 requests per Hour.
 
 ![alt text](https://github.com/MartinGaiser/MMM-eSports/blob/master/.github/onlyText.jpg "Only Text")
-![alt text](https://github.com/MartinGaiser/MMM-eSports/bloc/master/.github/onlyImages.jpg "Only Images")
+![alt text](https://github.com/MartinGaiser/MMM-eSports/blob/master/.github/onlyImages.jpg "Only Images")
 
 ## Installation
 1. Clone this repo into the ```~/MagicMirror/modules```. 
