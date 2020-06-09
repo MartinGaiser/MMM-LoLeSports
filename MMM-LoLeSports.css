@@ -34,5 +34,9 @@
 .MMM-LoLeSports .leagueIcon {
     width: auto;
     height: 2em;
-    filter: grayscale(1) brightness(4);
+}
+
+.MMM-LoLeSports .leagueIcon {
+    width: auto;
+    height: 2em;
 }
