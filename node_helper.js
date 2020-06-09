@@ -55,7 +55,7 @@ module.exports = NodeHelper.create({
 			if (retry){
 				//TODO find a way to get retry delay as variable
 				setTimeout(function(){
-					getData(apiKey, xPerPage, league_ids, updateDelay);
+					self.getData(apiKey, xPerPage, league_ids, updateDelay);
 				}, updateDelay);
 			}
 		}
