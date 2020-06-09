@@ -161,7 +161,7 @@ Module.register("MMM-LoLeSports", {
 		if(this.config.teamAsImage){
 			row.appendChild(this.getTeamAsImage(team2Url));
 		}else{
-			row.appendChild(this.getTeamAsImage(team2));
+			row.appendChild(this.getTeamAsText(team2));
 		}
 
 		return row;
