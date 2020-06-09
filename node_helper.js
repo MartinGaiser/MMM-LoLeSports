@@ -28,13 +28,15 @@ module.exports = NodeHelper.create({
 
 	getData: function(apiKey, xPerPage, league_ids, updateDelay) {
 
-		var urlApi = "https://api.pandascore.co/lol/matches/upcoming?filter[league_id]=" + league_ids + "&sort=scheduled_at";
+		var urlApi = "https://api.pandascore.co/lol/matches/upcoming";
+		urlApi = urlApi.concat("?filter[league_id]=" + league_ids);
+		urlApi = urlApi.concat("&sort=scheduled_at");
+		urlApi = urlApi.concat("&page=1");
+		urlApi = urlApi.concat("&per_page=" + xPerPage);
 		const options = {
 			url: urlApi,
 			headers: {
 			  "Authorization": "Bearer " + apiKey,
-			  "X-Page":1,
-			  "X-PerPage":xPerPage,
 			}
 		};
 
