@@ -32,11 +32,15 @@
 }
 
 .MMM-LoLeSports .leagueIcon {
-    width: auto;
-    height: 2em;
+    max-width: 2em;
+    max-height: 2em;
+    background-color: white;
+    border-radius: 20%;
 }
 
 .MMM-LoLeSports .teamIcon {
-    width: auto;
-    height: 2em;
+    max-width: 2em;
+    max-height: 2em;
+    background-color: white;
+    border-radius: 20%;
 }
