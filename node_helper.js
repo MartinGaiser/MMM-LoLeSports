@@ -4,7 +4,7 @@
  * By Martin Gaiser
  * MIT Licensed.
  */
-var request = require('request');
+var request = require("request");
 var NodeHelper = require("node_helper");
 var moment = require("moment");
 
@@ -26,14 +26,14 @@ module.exports = NodeHelper.create({
 			let config = payload;
 			moment.updateLocale(config.language, this.getLocaleSpecification(config.timeFormat));
 			//Start Interval Fething of Data
-			this.getData(config.apiKey, config.numberOfGames, config.league_ids, config.updateInterval*1000);
+			this.getData(config.apiKey, config.numberOfGames, config.leagueIDs, config.updateInterval*1000);
 		}
 	},
 
-	getData: function(apiKey, xPerPage, league_ids, updateDelay) {
+	getData: function(apiKey, xPerPage, leagueIDs, updateDelay) {
 
 		var urlApi = "https://api.pandascore.co/lol/matches/upcoming";
-		urlApi = urlApi.concat("?filter[league_id]=" + league_ids);
+		urlApi = urlApi.concat("?filter[league_id]=" + leagueIDs);
 		urlApi = urlApi.concat("&sort=scheduled_at");
 		urlApi = urlApi.concat("&page=1");
 		urlApi = urlApi.concat("&per_page=" + xPerPage);
@@ -60,13 +60,13 @@ module.exports = NodeHelper.create({
 				this.sendErrorNotification(currentTimeout); //send error message to frontend
 				currentTimeout = this.retryTimeout;
 				this.retryTimeout = this.retryTimeout * 2; //double retry timout for next execution
-				setTimeout(function(){ //set retry Timeout 
+				setTimeout(function(){ //set retry Timeout
 					self.getData(apiKey, xPerPage, league_ids, updateDelay);
 				}, currentTimeout);
 			}
 		}
 		request(options, callback);
-	},	
+	},
 
 	// Example function send notification test
 	sendUnauthorizedNotification: function(payload) {
@@ -89,10 +89,10 @@ module.exports = NodeHelper.create({
 			let team1Url = payload[i].opponents[0].opponent.image_url;
 			let team2Url = payload[i].opponents[1].opponent.image_url;
 			let leagueImage = payload[i].league.image_url;
-			scheduled_at = moment(scheduled_at).calendar();
+			scheduledAt = moment(scheduled_at).calendar();
 			match = {
 				"leagueName": leagueName,
-				"scheduled_at": scheduled_at,
+				"scheduledAt": scheduledAt,
 				"team1": team1,
 				"team2": team2,
 				"leagueImage": leagueImage,

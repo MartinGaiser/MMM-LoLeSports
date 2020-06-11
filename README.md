@@ -28,7 +28,7 @@ The Module should support all Games that are delivered by Pandascore. I only tes
 | Option           |Default| Description
 |----------------- |-------|-----------
 | `apiKey`         |   -   | **Required** To get the API-Key create a free [Pandascore Account](https://pandascore.co/users/sign_up). 
-| `league_ids`     |   -   | **Required** You will need to find the leagueIDs of the Leagues you want to display first. To do that use the [GetLeagues](https://developers.pandascore.co/doc/#operation/get_leagues)-Endpoint. Don't forget to supply your Token! 
+| `leagueIDs`     |   -   | **Required** You will need to find the leagueIDs of the Leagues you want to display first. To do that use the [GetLeagues](https://developers.pandascore.co/doc/#operation/get_leagues)-Endpoint. Don't forget to supply your Token! 
 | `updateInterval` | 60    | Time between requests in seconds. 
 | `numberOfGames`  | 10    | The number of Matches that will be displayed (number of rows)
 | `language`       | 'en'  | The language, all languages of moment.js are supported
@@ -43,7 +43,7 @@ Example Config:
 config: {
     updateInterval: 60,         
     apiKey: "<YOUR-API-KEY>",   
-    league_ids: "4197,4302",    
+    leagueIDs: "4197,4302",    
     numberOfGames: 5,           
     language: "en",             
     timeFormat: 12,            

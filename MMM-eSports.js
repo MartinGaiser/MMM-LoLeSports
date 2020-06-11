@@ -11,7 +11,7 @@ Module.register("MMM-eSports", {
 	defaults: {
 		updateInterval: 350000,
 		apiKey: "nokey",
-		league_ids: "4302",
+		leagueIDs: "4302",
 		numberOfGames: 10,
 		timeFormat: 12,
 		language: "en",
@@ -52,10 +52,10 @@ Module.register("MMM-eSports", {
 		//If this.leagueData is not empty, display the data
 		}else{
 			var wrapper = document.createElement("table");
-			wrapper.classList.add("leaguetable", );
+			wrapper.classList.add("leaguetable");
 			//wrapper.appendChild(this.getHeaderRow());
 			for (let i = 0; i < this.leagueData.length; i++){
-				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduled_at, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
+				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduledAt, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
 					 this.leagueData[i].team1,this.leagueData[i].team1Url, this.leagueData[i].team2, this.leagueData[i].team2Url))
 			}
 			return wrapper;
