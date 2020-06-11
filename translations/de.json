@@ -1,0 +1,8 @@
+{
+    "API-ERROR": "Kein API-Key bereitgestellt!",
+    "UNKNOWN-ERROR": "Unbekannter Fehler ... bitte die Logs überprüfen. Erneuter Versuch in:",
+    "UNAUTHORIZED": "Kein Zugriff...API-Token überprüfen",
+    "LOADING": "Lädt...",
+    "LEAGUE": "Liga"
+  }
+  

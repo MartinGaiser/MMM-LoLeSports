@@ -1,5 +1,7 @@
 {
-  "TITLE": "Title",
-  "UPDATE": "Update",
-  "API-ERROR": "No API-Key supplied!"
+  "API-ERROR": "No API-Key supplied!",
+  "UNKNOWN-ERROR": "Unknown Error ... check logs. Retrying in:",
+  "UNAUTHORIZED": "Unauthorized...Check API-Token",
+  "LOADING": "Loading...",
+  "LEAGUE": "League"
 }

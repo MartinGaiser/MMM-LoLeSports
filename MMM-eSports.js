@@ -34,20 +34,20 @@ Module.register("MMM-eSports", {
 	getDom: function() {
 		if (this.error){
 			var wrapper = document.createElement("div");
-			wrapper.innerHTML = "Unknown Error ... check logs. Retrying in: " + this.errorRetry--;
+			wrapper.innerHTML = this.translate("UNKNOWN-ERROR") + this.errorRetry--;
 			return wrapper;
 		}
 
 		if (this.unauthorized){
 			var wrapper = document.createElement("div");
-			wrapper.innerHTML = "Unauthorized ...check API-Token";
+			wrapper.innerHTML = this.translate("UNAUTHORIZED");
 			return wrapper;
 		}
 
 		// If this.leagueData is empty, assume module just started. Tell Backend to start fetching Data
 		if (this.leagueData == null) {
 			var wrapper = document.createElement("div");
-			wrapper.innerHTML = "Loading...";
+			wrapper.innerHTML = this.translate("LOADING");
 			this.sendSocketNotification("MMM-eSports-StartFetching", this.config)
 			return wrapper;
 		//If this.leagueData is not empty, display the data
@@ -118,7 +118,7 @@ Module.register("MMM-eSports", {
 
 		dataCell = document.createElement("th");
 		dataCell.classList.add("leagueheader", "th");
-		dataCell.innerHTML = "League";
+		dataCell.innerHTML = this.translate("LEAGUE");
 		header.appendChild(dataCell);
 
 		dataCell = document.createElement("th");
