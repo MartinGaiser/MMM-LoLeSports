@@ -8,42 +8,42 @@
  * Custom here your css module
  *
  */
- 
- .MMM-eSports .leaguetable {
-    border-collapse: collapse;
-    color: white;
-    line-height: 1;
-    text-align: center; 
+
+.MMM-eSports .leaguetable {
+  border-collapse: collapse;
+  color: white;
+  line-height: 1;
+  text-align: center;
 }
 
-.MMM-eSports .dateCell{
-    color: rgb(182, 182, 182);
+.MMM-eSports .dateCell {
+  color: rgb(182, 182, 182);
 }
 
 .MMM-eSports .th {
-    border-bottom: 2px solid white;
+  border-bottom: 2px solid white;
 }
 
-.MMM-eSports .leagueCell{
-    padding-left: 15px;
-    padding-right: 15px;
+.MMM-eSports .leagueCell {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.MMM-eSports .td{
-    font-size: 0.7em;
-    font-weight: lighter;
+.MMM-eSports .td {
+  font-size: 0.7em;
+  font-weight: lighter;
 }
 
 .MMM-eSports .versuscell {
-    padding-left: 15px;
-    padding-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .MMM-eSports .leagueIcon {
-    max-width: 1.25em;
-    max-height: 1.25em;
-    background-color: white;
-    border-radius: 20%;
+  max-width: 1.25em;
+  max-height: 1.25em;
+  background-color: white;
+  border-radius: 20%;
 }
 
 .MMM-eSports .teamIcon {
