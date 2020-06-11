@@ -26,15 +26,14 @@ Module.register("MMM-eSports", {
 		var self = this;
 		var leagueData = null;
 		var error = false;
+		var errorRetry = 0;
 		var unauthorized = false;
 	},
 
 	getDom: function() {
-		var self = this;
-
 		if (this.error){
 			var wrapper = document.createElement("div");
-			wrapper.innerHTML = "Unknown Error ... check logs.";
+			wrapper.innerHTML = "Unknown Error ... check logs. Retrying in: " + this.errorRetry--;
 			return wrapper;
 		}
 
@@ -44,12 +43,13 @@ Module.register("MMM-eSports", {
 			return wrapper;
 		}
 
-		// If this.dataRequest is not empty
+		// If this.leagueData is empty, assume module just started. Tell Backend to start fetching Data
 		if (this.leagueData == null) {
 			var wrapper = document.createElement("div");
 			wrapper.innerHTML = "Loading...";
 			this.sendSocketNotification("MMM-eSports-StartFetching", this.config)
 			return wrapper;
+		//If this.leagueData is not empty, display the data
 		}else{
 			var wrapper = document.createElement("table");
 			wrapper.classList.add("leaguetable", );
@@ -69,11 +69,15 @@ Module.register("MMM-eSports", {
 		}
 		if (notification == "MMM-eSports-Error"){
 			this.error = true;
-			this.updateDom();
+			this.errorRetry = payload;
+			setInterval(this.updateDom(), 1000,this.errorRetry); //Update Fronent each second and to count down retry timer
 		}
 		if (notification == "MMM-eSports-GameData"){
 			this.leagueData = payload;
-			this.updateDom();
+			this.unauthorized = false;
+			this.error = false;
+			this.errorRetry = 0;
+			this.updateDom();	//Update Dom
 		}
 	},
 

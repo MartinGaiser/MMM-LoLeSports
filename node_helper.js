@@ -21,6 +21,8 @@ module.exports = NodeHelper.create({
 	socketNotificationReceived: function(notification, payload) {
 		if (notification === "MMM-eSports-StartFetching") {
 			console.log("Starting to Fetch League Matches");
+			var defaultRetryTimeout = 2000;
+			var retryTimeout = defaultRetryTimeout; //timeout after unknown error == 2 Seconds;
 			let config = payload;
 			moment.updateLocale(config.language, this.getLocaleSpecification(config.timeFormat));
 			//Start Interval Fething of Data
@@ -42,28 +44,27 @@ module.exports = NodeHelper.create({
 			}
 		};
 
-		var retry = true;
 		var self = this;
 
 
 		const callback = function(error, response, body){
 			if (!error && response.statusCode == 200) {
-				self.sendLeagueDataNotification(JSON.parse(body));
-			}else if (!error && response.statusCode == 401){
-				self.sendUnauthorizedNotification();
-				retry = false;
-			}else{
-				self.sendErrorNotification();
-				retry = false;
-			}
-			if (retry){
-				//TODO find a way to get retry delay as variable
-				setTimeout(function(){
+				self.sendLeagueDataNotification(JSON.parse(body)); //send Data to Frontend
+				self.retryTimeout = self.defaultRetryTimeout; //reset retry timeout after successful request
+				setTimeout(function(){	//start Timeout for new request
 					self.getData(apiKey, xPerPage, league_ids, updateDelay);
 				}, updateDelay);
+			}else if (!error && response.statusCode == 401){
+				self.sendUnauthorizedNotification(); // send unauthorized message to frontned and stop loop
+			}else{
+				this.sendErrorNotification(currentTimeout); //send error message to frontend
+				currentTimeout = this.retryTimeout;
+				this.retryTimeout = this.retryTimeout * 2; //double retry timout for next execution
+				setTimeout(function(){ //set retry Timeout 
+					self.getData(apiKey, xPerPage, league_ids, updateDelay);
+				}, currentTimeout);
 			}
 		}
-		   
 		request(options, callback);
 	},	
 
