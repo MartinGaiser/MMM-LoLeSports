@@ -17,6 +17,7 @@ The Module should support all Games that are delivered by Pandascore. I only tes
        {
             module: 'MMM-eSports',
             position: 'top_right',
+            header: 'Custom Header', //Optional
             config: {
                 ...
             }
@@ -35,6 +36,7 @@ The Module should support all Games that are delivered by Pandascore. I only tes
 | `timeFormat`     | 12    | Either 12 (pm/am) or 24
 | `leagueAsImage`  | false | If true the league icon will be displayed instead of the leagues name
 | `teamAsImage`    | false | If true the teams icon will be displayed instead of the teams name
+| `showHeader` | false | Show the custom Header (Calendar Icon, Team1, Team2 League. See Image 'Custom Header')
 
 
 Example Config: 
