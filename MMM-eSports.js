@@ -106,10 +106,10 @@ Module.register("MMM-eSports", {
 
 		let dataCell = document.createElement("th");
 		dataCell.classList.add("dateheader", "th");
-		
+
 		dataCell.classList.add("leagueheader", "th");
 		let dateIcon = document.createElement("i");
-        dateIcon.classList.add("fa", "fa-calendar");
+		dateIcon.classList.add("fa", "fa-calendar");
 		dataCell.appendChild(dateIcon);
 		header.appendChild(dataCell);
 
@@ -136,9 +136,8 @@ Module.register("MMM-eSports", {
 	getDataRow: function(date, league, leagueImageURL, team1,team1Url, team2, team2Url){
 		let row = document.createElement("tr");
 
-		
 		row.appendChild(this.getDateCell(date));
-		
+
 		if(this.config.leagueAsImage){
 			row.appendChild(this.getLeagueAsImage(leagueImageURL));
 		}else{
