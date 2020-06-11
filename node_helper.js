@@ -32,7 +32,7 @@ module.exports = NodeHelper.create({
 
 	getData: function(apiKey, xPerPage, leagueIDs, updateDelay) {
 
-		var urlApi = "https://api.pandascore.co/lol/matches/upcoming";
+		let urlApi = "https://api.pandascore.co/lol/matches/upcoming";
 		urlApi = urlApi.concat("?filter[league_id]=" + leagueIDs);
 		urlApi = urlApi.concat("&sort=scheduled_at");
 		urlApi = urlApi.concat("&page=1");
@@ -83,7 +83,7 @@ module.exports = NodeHelper.create({
 		let match = null;
 		for (i = 0; i < numberOfMatches-1; i++){
 			let leagueName = payload[i].league.name;
-			let scheduled_at = payload[i].scheduledAt;
+			let scheduledAt = payload[i].scheduledAt;
 			let team1 = payload[i].opponents[0].opponent.acronym;
 			let team2 = payload[i].opponents[1].opponent.acronym;
 			let team1Url = payload[i].opponents[0].opponent.image_url;
