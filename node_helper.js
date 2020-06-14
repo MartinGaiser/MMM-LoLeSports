@@ -52,7 +52,7 @@ module.exports = NodeHelper.create({
 				self.sendLeagueDataNotification(JSON.parse(body)); //send Data to Frontend
 				self.retryTimeout = self.defaultRetryTimeout; //reset retry timeout after successful request
 				setTimeout(function(){	//start Timeout for new request
-					self.getData(apiKey, xPerPage, league_ids, updateDelay);
+					self.getData(apiKey, xPerPage, leagueIDs, updateDelay);
 				}, updateDelay);
 			}else if (!error && response.statusCode == 401){
 				self.sendUnauthorizedNotification(); // send unauthorized message to frontned and stop loop
@@ -61,7 +61,7 @@ module.exports = NodeHelper.create({
 				currentTimeout = this.retryTimeout;
 				this.retryTimeout = this.retryTimeout * 2; //double retry timout for next execution
 				setTimeout(function(){ //set retry Timeout
-					self.getData(apiKey, xPerPage, league_ids, updateDelay);
+					self.getData(apiKey, xPerPage, leagueIDs, updateDelay);
 				}, currentTimeout);
 			}
 		}
