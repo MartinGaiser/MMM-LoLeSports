@@ -18,7 +18,7 @@ Module.register("MMM-eSports", {
 		leagueAsImage: false,
 		teamAsImage: false,
 		showHeader: false,
-		showTimestamp:true
+		showTimestamp:false
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
@@ -63,7 +63,7 @@ Module.register("MMM-eSports", {
 					 this.leagueData[i].team1,this.leagueData[i].team1Url, this.leagueData[i].team2, this.leagueData[i].team2Url))
 			}
 			if (this.config.showTimestamp){
-				wrapper.appendChild(this.getTimeStampRow())
+				wrapper.appendChild(this.getTimeStampRow());
 			}
 			return wrapper;
 		}
@@ -117,7 +117,7 @@ Module.register("MMM-eSports", {
 		let timestmap = document.createElement("td");
 		timestmap.innerHTML = moment().calendar();
 		timeStampRow.appendChild(timestmap);
-		
+		return timeStampRow;		
 	},
 
 	getHeaderRow: function(){
