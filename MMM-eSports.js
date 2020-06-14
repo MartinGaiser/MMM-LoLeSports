@@ -63,7 +63,7 @@ Module.register("MMM-eSports", {
 					 this.leagueData[i].team1,this.leagueData[i].team1Url, this.leagueData[i].team2, this.leagueData[i].team2Url))
 			}
 			if (this.config.showTimestamp){
-				wrapper.appendChild(this.getTimeStampRow)
+				wrapper.appendChild(this.getTimeStampRow())
 			}
 			return wrapper;
 		}
