@@ -53,17 +53,19 @@ Module.register("MMM-eSports", {
 			return wrapper;
 		//If this.leagueData is not empty, display the data
 		}else{
-			var wrapper = document.createElement("table");
-			wrapper.classList.add("leaguetable");
+			var wrapper = document.createElement("div");
+			var table = document.createElement("table");
+			wrapper.appendChild(table);
+			table.classList.add("leaguetable");
 			if (this.config.showHeader){
-				wrapper.appendChild(this.getHeaderRow());
+				table.appendChild(this.getHeaderRow());
 			}
 			for (let i = 0; i < this.leagueData.length; i++){
-				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduledAt, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
+				table.appendChild(this.getDataRow(this.leagueData[i].scheduledAt, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
 					 this.leagueData[i].team1,this.leagueData[i].team1Url, this.leagueData[i].team2, this.leagueData[i].team2Url))
 			}
 			if (this.config.showTimestamp){
-				wrapper.appendChild(this.getTimeStampRow());
+				wrapper.appendChild(this.getTimeStamp());
 			}
 			return wrapper;
 		}
@@ -108,16 +110,13 @@ Module.register("MMM-eSports", {
 		};
 	},
 
-	getTimeStampRow: function(){
-		let timeStampRow = document.createElement("tr");
-		timeStampRow.appendChild(document.createElement("td"));
-		timeStampRow.appendChild(document.createElement("td"));
-		timeStampRow.appendChild(document.createElement("td"));
-		timeStampRow.appendChild(document.createElement("td"));
-		let timestmap = document.createElement("td");
+	getTimeStamp: function(){
+		let table = document.createElement("table");
+		let timestmap = document.createElement("div");
+		timestmap.classList.add("small", "dimmed");
 		timestmap.innerHTML = moment().calendar();
-		timeStampRow.appendChild(timestmap);
-		return timeStampRow;		
+		table.appendChild(document.createElement("tr").appendChild(document.createElement("td").appendChild(timestmap)));
+		return table;		
 	},
 
 	getHeaderRow: function(){
