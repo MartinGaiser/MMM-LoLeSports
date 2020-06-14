@@ -90,7 +90,7 @@ module.exports = NodeHelper.create({
 			let team2Url = payload[i].opponents[1].opponent.image_url;
 			let leagueImage = payload[i].league.image_url;
 			let myMoment = moment(scheduledAt);
-			if (moment(scheduledAt).diff(now, 'days', true) <= 1){
+			if (moment(scheduledAt).diff(moment(), 'days', true) <= 1){
 				scheduledAt = myMoment.fromNow();
 			}else{
 				scheduledAt = myMoment.calendar();
