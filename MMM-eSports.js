@@ -108,7 +108,7 @@ Module.register("MMM-eSports", {
 		};
 	},
 
-	getTimeStampRows: function(){
+	getTimeStampRow: function(){
 		let timeStampRow = document.createElement("tr");
 		timeStampRow.appendChild(document.createElement("td"));
 		timeStampRow.appendChild(document.createElement("td"));
