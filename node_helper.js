@@ -89,7 +89,13 @@ module.exports = NodeHelper.create({
 			let team1Url = payload[i].opponents[0].opponent.image_url;
 			let team2Url = payload[i].opponents[1].opponent.image_url;
 			let leagueImage = payload[i].league.image_url;
-			scheduledAt = moment(scheduledAt).toNow();
+			let myMoment = moment(scheduledAt);
+			if (moment(scheduledAt).diff(now, 'days', true) <= 1){
+				scheduledAt = myMoment.fromNow();
+			}else{
+				scheduledAt = myMoment.calendar();
+			}
+			
 			match = {
 				"leagueName": leagueName,
 				"scheduledAt": scheduledAt,
