@@ -116,7 +116,7 @@ Module.register("MMM-eSports", {
 		timeStampRow.appendChild(document.createElement("td"));
 		let timestmap = document.createElement("td");
 		timestmap.innerHTML = moment().calendar();
-		timeStampRow.appendChild()
+		timeStampRow.appendChild(timestmap);
 		
 	},
 
