@@ -17,7 +17,8 @@ Module.register("MMM-eSports", {
 		language: "en",
 		leagueAsImage: false,
 		teamAsImage: false,
-		showHeader: false
+		showHeader: false,
+		showTimestamp:true
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
@@ -60,6 +61,9 @@ Module.register("MMM-eSports", {
 			for (let i = 0; i < this.leagueData.length; i++){
 				wrapper.appendChild(this.getDataRow(this.leagueData[i].scheduledAt, this.leagueData[i].leagueName, this.leagueData[i].leagueImage,
 					 this.leagueData[i].team1,this.leagueData[i].team1Url, this.leagueData[i].team2, this.leagueData[i].team2Url))
+			}
+			if (this.config.showTimestamp){
+				wrapper.appendChild(this.getTimeStampRow)
 			}
 			return wrapper;
 		}
@@ -104,6 +108,18 @@ Module.register("MMM-eSports", {
 		};
 	},
 
+	getTimeStampRows: function(){
+		let timeStampRow = document.createElement("tr");
+		timeStampRow.appendChild(document.createElement("td"));
+		timeStampRow.appendChild(document.createElement("td"));
+		timeStampRow.appendChild(document.createElement("td"));
+		timeStampRow.appendChild(document.createElement("td"));
+		let timestmap = document.createElement("td");
+		timestmap.innerHTML = moment().calendar();
+		timeStampRow.appendChild()
+		
+	},
+
 	getHeaderRow: function(){
 		let header = document.createElement("tr");
 
@@ -132,7 +148,7 @@ Module.register("MMM-eSports", {
 
 		dataCell = document.createElement("th");
 		dataCell.classList.add("team2header","th");
-		dataCell.innerHTML = "Team 2 ";
+		dataCell.innerHTML = "Team 2";
 		header .appendChild(dataCell);
 		return header;
 	},
