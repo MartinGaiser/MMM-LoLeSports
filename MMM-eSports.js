@@ -25,11 +25,10 @@ Module.register("MMM-eSports", {
 
 	start: function() {
 		Log.info("Starting module: " + this.name);
-		var self = this;
-		var leagueData = null;
-		var error = false;
-		var errorRetry = 0;
-		var unauthorized = false;
+		this.leagueData = null;
+		this.error = false;
+		this.unauthorized = false;
+		this.errorRetry = 0;
 	},
 
 	getDom: function() {
@@ -79,11 +78,10 @@ Module.register("MMM-eSports", {
 			this.updateDom();
 		}
 		if (notification == "MMM-eSports-Error"){
-			var self = this;
-			var currentError = this.error;
+			var IsInErrorState = this.error;
 			this.error = true;
 			this.errorRetry = payload/1000; // format to seconds
-			if (currentError == false || typeof(currentError == "undefined")){
+			if (!IsInErrorState){
 				Log.log("Starting Interval");
 				setInterval(function(){
 					self.updateDom();
