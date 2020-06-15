@@ -78,6 +78,7 @@ Module.register("MMM-eSports", {
 			this.updateDom();
 		}
 		if (notification == "MMM-eSports-Error"){
+			var self = this;
 			var IsInErrorState = this.error;
 			this.error = true;
 			this.errorRetry = payload/1000; // format to seconds
