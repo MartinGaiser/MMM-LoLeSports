@@ -35,7 +35,7 @@ Module.register("MMM-eSports", {
 	getDom: function() {
 		if (this.error){
 			var wrapper = document.createElement("div");
-			wrapper.innerHTML = this.translate("UNKNOWN-ERROR") + this.errorRetry--;
+			wrapper.innerHTML = this.translate("UNKNOWN-ERROR") + this.errorRetry-- + "s";
 			return wrapper;
 		}
 
@@ -73,15 +73,17 @@ Module.register("MMM-eSports", {
 
 	socketNotificationReceived: function(notification, payload){
 		if (notification == "MMM-eSports-Unauthorized"){
+			clearInterval();
 			this.unauthorized = true;
 			this.updateDom();
 		}
 		if (notification == "MMM-eSports-Error"){
 			this.error = true;
-			this.errorRetry = payload;
-			setInterval(this.updateDom(), 1000,this.errorRetry); //Update Fronent each second and to count down retry timer
+			this.errorRetry = payload/1000; // format to seconds
+			setInterval(this.updateDom(), 1000); //Update Fronent each second and to count down retry timer
 		}
 		if (notification == "MMM-eSports-GameData"){
+			clearInterval();
 			this.leagueData = payload;
 			this.unauthorized = false;
 			this.error = false;
