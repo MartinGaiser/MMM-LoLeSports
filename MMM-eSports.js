@@ -79,11 +79,14 @@ Module.register("MMM-eSports", {
 			this.updateDom();
 		}
 		if (notification == "MMM-eSports-Error"){
+			var self = this;
 			let currentError = this.error;
 			this.error = true;
 			this.errorRetry = payload/1000; // format to seconds
 			if (currentError == true){
-				setInterval(this.updateDom(), 1000); //Update Fronent each second and to count down retry timer
+				setInterval(function(){
+					self.updateDom();
+				}, 1000); //Update Fronent each second and to count down retry timer
 			}
 		}
 		if (notification == "MMM-eSports-GameData"){
