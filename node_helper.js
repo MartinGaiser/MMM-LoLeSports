@@ -21,16 +21,14 @@ module.exports = NodeHelper.create({
 	socketNotificationReceived: function(notification, payload) {
 		if (notification === "MMM-eSports-StartFetching") {
 			console.log("Starting to Fetch League Matches");
-			var defaultRetryTimeout = 2000;
-			var retryTimeout = defaultRetryTimeout; //timeout after unknown error == 2 Seconds;
 			let config = payload;
 			moment.updateLocale(config.language, this.getLocaleSpecification(config.timeFormat));
 			//Start Interval Fething of Data
-			this.getData(config.apiKey, config.numberOfGames, config.leagueIDs, config.updateInterval*1000);
+			this.getData(config.apiKey, config.numberOfGames, config.leagueIDs, config.updateInterval*1000, 2000);
 		}
 	},
 
-	getData: function(apiKey, xPerPage, leagueIDs, updateDelay) {
+	getData: function(apiKey, xPerPage, leagueIDs, updateDelay, backoff) {
 		console.log("Fetching new Data from Pandascore");
 		let urlApi = "https://api.pandascore.co/lol/matches/upcoming";
 		urlApi = urlApi.concat("?filter[league_id]=" + leagueIDs);
@@ -59,13 +57,11 @@ module.exports = NodeHelper.create({
 				console.log("unauthorized");
 				self.sendUnauthorizedNotification(); // send unauthorized message to frontned and stop loop
 			}else{
-				console.log("error");
-				let currentTimeout = self.retryTimeout;
-				self.sendErrorNotification(currentTimeout); //send error message to frontend
-				self.retryTimeout = self.retryTimeout * 2; //double retry timout for next execution
+				console.log("error. current backoff: " + backoff);
+				self.sendErrorNotification(backoff); //send error message to frontend
 				setTimeout(function(){ //set retry Timeout
-					self.getData(apiKey, xPerPage, leagueIDs, updateDelay);
-				}, currentTimeout);
+					self.getData(apiKey, xPerPage, leagueIDs, updateDelay, backoff*2);
+				}, backoff);
 			}
 		}
 		request(options, callback);
