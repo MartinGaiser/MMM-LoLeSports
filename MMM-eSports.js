@@ -83,7 +83,7 @@ Module.register("MMM-eSports", {
 			var currentError = this.error;
 			this.error = true;
 			this.errorRetry = payload/1000; // format to seconds
-			if (currentError == false){
+			if (currentError == false || typeof(currentError == "undefined")){
 				Log.log("Starting Interval");
 				setInterval(function(){
 					self.updateDom();
