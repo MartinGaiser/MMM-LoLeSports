@@ -47,17 +47,15 @@ module.exports = NodeHelper.create({
 
 		const callback = function(error, response, body){
 			if (!error && response.statusCode == 200) {
-				console.log("OK");
 				self.sendLeagueDataNotification(JSON.parse(body)); //send Data to Frontend
 				self.retryTimeout = self.defaultRetryTimeout; //reset retry timeout after successful request
 				setTimeout(function(){	//start Timeout for new request
 					self.getData(apiKey, xPerPage, leagueIDs, updateDelay);
 				}, updateDelay);
 			}else if (!error && response.statusCode == 401){
-				console.log("unauthorized");
 				self.sendUnauthorizedNotification(); // send unauthorized message to frontned and stop loop
 			}else{
-				console.log("error. current backoff: " + backoff);
+				console.log("MMM-eSports: StatusCode == " + response.statusCode);
 				self.sendErrorNotification(backoff); //send error message to frontend
 				setTimeout(function(){ //set retry Timeout
 					self.getData(apiKey, xPerPage, leagueIDs, updateDelay, backoff*2);
