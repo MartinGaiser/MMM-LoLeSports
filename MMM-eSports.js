@@ -35,7 +35,8 @@ Module.register("MMM-eSports", {
 	getDom: function() {
 		if (this.error){
 			var wrapper = document.createElement("div");
-			wrapper.innerHTML = this.translate("UNKNOWN-ERROR") + this.errorRetry-- + "s";
+			this.errorRetry = this.errorRetry-1;
+			wrapper.innerHTML = this.translate("UNKNOWN-ERROR") + this.errorRetry + "s";
 			return wrapper;
 		}
 
