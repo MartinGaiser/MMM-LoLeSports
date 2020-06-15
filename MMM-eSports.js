@@ -83,7 +83,7 @@ Module.register("MMM-eSports", {
 			let currentError = this.error;
 			this.error = true;
 			this.errorRetry = payload/1000; // format to seconds
-			if (currentError == true){
+			if (currentError == false){
 				setInterval(function(){
 					self.updateDom();
 				}, 1000); //Update Fronent each second and to count down retry timer
