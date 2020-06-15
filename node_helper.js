@@ -31,7 +31,7 @@ module.exports = NodeHelper.create({
 	},
 
 	getData: function(apiKey, xPerPage, leagueIDs, updateDelay) {
-
+		console.log("Fetching new Data from Pandascore");
 		let urlApi = "https://api.pandascore.co/lol/matches/upcoming";
 		urlApi = urlApi.concat("?filter[league_id]=" + leagueIDs);
 		urlApi = urlApi.concat("&sort=scheduled_at");
@@ -49,17 +49,20 @@ module.exports = NodeHelper.create({
 
 		const callback = function(error, response, body){
 			if (!error && response.statusCode == 200) {
+				console.log("OK");
 				self.sendLeagueDataNotification(JSON.parse(body)); //send Data to Frontend
 				self.retryTimeout = self.defaultRetryTimeout; //reset retry timeout after successful request
 				setTimeout(function(){	//start Timeout for new request
 					self.getData(apiKey, xPerPage, leagueIDs, updateDelay);
 				}, updateDelay);
 			}else if (!error && response.statusCode == 401){
+				console.log("unauthorized");
 				self.sendUnauthorizedNotification(); // send unauthorized message to frontned and stop loop
 			}else{
-				this.sendErrorNotification(currentTimeout); //send error message to frontend
-				currentTimeout = this.retryTimeout;
-				this.retryTimeout = this.retryTimeout * 2; //double retry timout for next execution
+				console.log("error");
+				let currentTimeout = self.retryTimeout;
+				self.sendErrorNotification(currentTimeout); //send error message to frontend
+				self.retryTimeout = self.retryTimeout * 2; //double retry timout for next execution
 				setTimeout(function(){ //set retry Timeout
 					self.getData(apiKey, xPerPage, leagueIDs, updateDelay);
 				}, currentTimeout);
